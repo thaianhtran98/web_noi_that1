@@ -5,8 +5,11 @@ namespace App\Http\Services\Product;
 
 
 use App\Models\Menu;
+use App\Models\producst_detail;
 use App\Models\Product;
+use App\Models\products_detail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProductAdminService
 {
@@ -39,11 +42,21 @@ class ProductAdminService
 
         try {
             $request->except('_token');
+//            dd($request->input('img_detail'));
             Product::create($request->all());
+
+            $product = Product::orderByDesc('id')->first();
+
+            foreach ($request->input('img_detail') as $img_detail){
+                products_detail::create([
+                    'id_sp'=>(integer)$product->id,
+                    'thumb_detail'=>(string)$img_detail,
+                ]);
+            }
 
             Session::flash('success', 'Thêm Sản phẩm thành công');
         } catch (\Exception $err) {
-            Session::flash('error', 'Thêm Sản phẩm lỗi');
+            Session::flash('error', $err->getMessage());
             \Log::info($err->getMessage());
             return  false;
         }
@@ -78,10 +91,16 @@ class ProductAdminService
     {
         $product = Product::where('id', $request->input('id'))->first();
         if ($product) {
+            $path = str_replace('/web_noi_that1/public/storage', 'public', $product->thumb);
+            Storage::delete($path);
             $product->delete();
             return true;
         }
 
         return false;
+    }
+
+    public function get_img_detail($id){
+        return products_detail::where('id_sp',$id)->get();
     }
 }

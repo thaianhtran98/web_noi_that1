@@ -90,7 +90,6 @@
                 transition: height 0.3s, background-color 0.3s;
             }
 
-
         </style>
     <div class="container-menu-desktop" >
         <div class="wrap-menu-desktop">
@@ -100,7 +99,7 @@
                 </a>
 
                 <!-- Menu desktop -->
-                <div class="menu-desktop">
+                <div class="menu-desktop" style="width: auto">
                     <ul class="main-menu">
                         <li class="active-menu"><a href="{{route('home')}}">Trang Chủ</a> </li>
                         {!!$menusHtml!!}
@@ -116,7 +115,6 @@
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
-
                 </div>
             </nav>
         </div>

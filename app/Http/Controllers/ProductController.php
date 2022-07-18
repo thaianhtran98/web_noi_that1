@@ -18,11 +18,13 @@ class ProductController extends Controller
     {
         $product = $this->productService->show($id);
         $productsMore = $this->productService->more($id);
+        $img_detail = $this->productService->get_img_detail($id);
 
         return view('products.content', [
             'title' => $product->name,
             'product' => $product,
-            'products' => $productsMore
+            'products' => $productsMore,
+            'img_detail'=>$img_detail,
         ]);
     }
 }

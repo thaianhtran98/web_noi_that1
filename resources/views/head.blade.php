@@ -31,5 +31,6 @@
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/util.css">
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/main.css">
 <!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/style.css">
+{{--<link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/style.css">--}}
+
 <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -7,6 +7,7 @@ use App\Http\Requests\Product\ProductRequest;
 use App\Http\Services\Product\ProductAdminService;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -43,10 +44,12 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
+        $img_detail = $this->productService->get_img_detail($product->id);
         return view('admin.product.edit', [
             'title' => 'Chỉnh Sửa Sản Phẩm',
             'product' => $product,
-            'menus' => $this->productService->getMenu()
+            'menus' => $this->productService->getMenu(),
+            'img_detail'=>$img_detail,
         ]);
     }
 
@@ -64,6 +67,7 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
+
         $result = $this->productService->delete($request);
         if ($result) {
             return response()->json([

@@ -116,7 +116,7 @@
         margin-bottom: 30px;
     }
 </style>
-<script src="/web_noi_that1/public/template/admin/dist/js/jquery-3.5.1.js" ></script>
+{{--<script src="/web_noi_that1/public/template/admin/dist/js/jquery-3.5.1.js" ></script>--}}
 <script src="/web_noi_that1/public/template/admin/dist/js/bootstrap.min.js"></script>
 <script src="/web_noi_that1/public/template/admin/dist/js/jquery.dataTables.min.js"></script>
 <script src="/web_noi_that1/public/template/admin/dist/js/dataTables.bootstrap4.min.js"></script>

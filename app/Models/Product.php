@@ -19,6 +19,12 @@ class Product extends Model
         'active',
         'thumb',
         'view',
+        'color',
+        'size',
+        'material',
+        'style',
+        'origin',
+        'warranty',
     ];
 
     public function menu()

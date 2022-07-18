@@ -127,8 +127,15 @@ class Helper
 
     public static function price($price = 0, $priceSale = 0)
     {
-        if ($priceSale != 0) return number_format($priceSale);
-        if ($price != 0)  return number_format($price);
-        return '<a href="/lien-he.html">Liên Hệ</a>';
+        $html1 = '';
+        if ($priceSale != 0){
+            $html1 .= '<span style="text-decoration-line: line-through ">'. number_format($price) . '</span>';
+            $html1 .= '<br>';
+            $html1 .= number_format($priceSale);
+            return $html1;
+        }
+        if ($price != 0)
+            return number_format($price);
+        return '<a style="font-family:  Roboto, Sans-Serif;" href="/lien-he.html">Liên Hệ</a>';
     }
 }

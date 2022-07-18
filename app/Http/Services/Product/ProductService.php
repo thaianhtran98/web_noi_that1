@@ -5,6 +5,7 @@ namespace App\Http\Services\Product;
 
 
 use App\Models\Product;
+use App\Models\products_detail;
 
 class ProductService
 {
@@ -38,4 +39,9 @@ class ProductService
             ->limit(8)
             ->get();
     }
+
+    public function get_img_detail($id){
+        return products_detail::where('id_sp',$id)->get();
+    }
+
 }

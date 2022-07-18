@@ -2,6 +2,40 @@
 
 @section('head')
     <script src="/web_noi_that1/public/ckeditor/ckeditor.js"></script>
+    <style>
+        .list-images {
+            width: 50%;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .hidden { display: none; }
+        .box-image {
+            width: 100px;
+            height: 108px;
+            position: relative;
+            float: left;
+            margin-left: 5px;
+        }
+        .box-image img {
+            width: 100px;
+            height: 100px;
+        }
+        .wrap-btn-delete {
+            position: absolute;
+            top: -8px;
+            right: 0;
+            height: 2px;
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+        .btn-delete-image {
+            cursor: pointer;
+        }
+        /*.table {*/
+        /*    width: 15%;*/
+        /*}*/
+    </style>
 @endsection
 
 @section('content')
@@ -46,9 +80,42 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Mô Tả </label>
-                <textarea name="description" class="form-control">{{ $product->description }}</textarea>
+
+            <div class="row">
+                <div  class="col-md-6">
+                    <div class="form-group">
+                        <label for="menu">Chất Liệu</label>
+                        <input type="text" name="material" id="material"  value="{{ $product->material }}" class="form-control" placeholder="Nhập chất liệu" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="menu">Kiểu Dáng</label>
+                        <input type="text" name="style" id="style" value="{{ $product->style }}"  class="form-control" placeholder="Nhập kiểu dáng" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="menu">Xuất Xứ</label>
+                        <input type="text" name="origin" id="origin"  value="{{ $product->origin }}"  class="form-control" placeholder="Nhập xuất xứ">
+                    </div>
+                </div>
+
+                <div  class="col-md-6">
+                    <div class="form-group">
+                        <label for="menu">Màu Sắc</label>
+                        <input type="text" name="color" id="color" value="{{ $product->color }}"  class="form-control" placeholder="Nhập màu sắc" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="menu">Kích Cỡ</label>
+                        <input type="text" name="size"  id="size" value="{{ $product->size }}"  class="form-control" placeholder="Nhập kích cỡ" >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="menu">Bảo hành</label>
+                        <input type="text" name="warranty" id="warranty" value="{{ $product->warranty }}"  class="form-control" placeholder="Nhập thời gian bảo hành" >
+                    </div>
+                </div>
+
             </div>
 
             <div class="form-group">
@@ -66,6 +133,58 @@
                 </div>
                 <input type="hidden" name="thumb" value="{{ $product->thumb }}" id="thumb">
             </div>
+
+            <label for="menu">Ảnh Chi Tiết Sản Phẩm </label></br>
+            <div class="input-group hdtuto control-group lst increment" >
+                <div class="list-input-hidden-upload">
+                    <input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">
+                </div>
+                <div class="input-group-btn">
+                    <button class="btn btn-success btn-add-image" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>+Add image</button>
+                </div>
+            </div>
+            <div class="list-images">
+
+                @foreach($img_detail as $img)
+                    <div class="box-image">
+                        <input type="hidden" name="images_uploaded[]" value="{{ $img }}" id="{{$img->thumb_detail }}">
+                        <img src="{{ $img->thumb_detail }}" class="picture-box">
+                        <div class="wrap-btn-delete"><span data-id="{{$img->thumb_detail }}" class="btn-delete-image">x</span></div>
+                    </div>
+                @endforeach
+
+                @if (isset($list_images) && !empty($list_images))
+                    @foreach (json_decode($list_images) as $key => $img)
+                        <div class="box-image">
+                            <input type="hidden" name="images_uploaded[]" value="{{ $img }}" id="img-{{ $key }}">
+                            <img src="{{ asset('files/'.$img) }}" class="picture-box">
+                            <div class="wrap-btn-delete"><span data-id="img-{{ $key }}" class="btn-delete-image">x</span></div>
+                        </div>
+                    @endforeach
+                    <input type="hidden" name="images_uploaded_origin" value="{{ $list_images }}">
+                    <input type="hidden" name="id" value="{{ $id }}">
+                @endif
+            </div>
+
+            @if (isset($files) && $files->count() > 0)
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($files as $elm)
+                        <tr>
+                            <th scope="row">{{ $elm->id }}</th>
+                            <td><a href="{{ route('file.edit',['id' => $elm->id]) }}"><button type="button" class="btn btn-info">Edit</button></a></td>
+                        </tr>
+
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
 
             <div class="form-group">
                 <label>Kích Hoạt</label>
@@ -91,9 +210,10 @@
 @endsection
 
 @section('footer')
+
+
     <script>
         CKEDITOR.replace('content');
-
         /*Upload File */
         $('#upload').change(function () {
             const form = new FormData();
@@ -117,5 +237,61 @@
                 }
             });
         });
+
+        $(document).ready(function() {
+            $(".btn-add-image").click(function(){
+                $('#file_upload').trigger('click');
+            });
+
+            $('.list-input-hidden-upload').on('change', '#file_upload', function(event){
+                let today = new Date();
+                let time = today.getTime();
+                let image = event.target.files[0];
+                let file_name = event.target.files[0].name;
+                let box_image = $('<div class="box-image"></div>');
+
+                const form = new FormData();
+                form.append('file', event.target.files[0]);
+
+                $.ajax({
+                    processData: false,
+                    contentType: false,
+                    cache :false,
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data: form,
+                    url: '{{route('upload')}}',
+                    success: function (results) {
+                        if (results.error === false) {
+                            box_image.append('<img src="' + results.url + '" class="picture-box">');
+                            box_image.append('<input type="hidden" name="img_detail[]" value="'+ results.url +'" >');
+                        } else {
+                            alert('Upload File Lỗi');
+                        }
+                    }
+                });
+
+                box_image.append('<div class="wrap-btn-delete"><span data-id='+time+' class="btn-delete-image">x</span></div>');
+                $(".list-images").append(box_image);
+
+                $(this).removeAttr('id');
+                $(this).attr( 'id', time);
+                let input_type_file = '<input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">';
+                $('.list-input-hidden-upload').append(input_type_file);
+            });
+
+            $(".list-images").on('click', '.btn-delete-image', function(){
+                let id = $(this).data('id');
+                $('#'+id).remove();
+                $(this).parents('.box-image').remove();
+
+
+            });
+        });
+
+    </script>
+
+    <script>
+
     </script>
 @endsection
