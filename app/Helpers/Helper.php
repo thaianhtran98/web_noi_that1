@@ -129,9 +129,9 @@ class Helper
     {
         $html1 = '';
         if ($priceSale != 0){
-            $html1 .= '<span style="text-decoration-line: line-through ">'. number_format($price) . '</span>';
+            $html1 .= '<span style="text-decoration-line: line-through ">'. number_format($price) . ' VNĐ</span>';
             $html1 .= '<br>';
-            $html1 .= number_format($priceSale);
+            $html1 .= number_format($priceSale) . ' VNĐ';
             return $html1;
         }
         if ($price != 0)

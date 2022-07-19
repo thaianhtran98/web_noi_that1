@@ -3,20 +3,20 @@
 @section('content')
     <!-- Slider -->
     <section class="section-slide" >
-        <div class="wrap-slick1">
+        <div class="wrap-slick1 rs1-slick1">
             <div class="slick1">
-
                 @foreach($sliders as $slider)
-                    <div class="item-slick1" style="background-image: url({{ $slider->thumb }});">
+                    <div class="item-slick1" style="background-image: url({{$slider->thumb}});">
                         <div class="container h-full">
-                            <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+                            <div class="flex-col-l-m h-full p-t-100 p-b-30">
                                 <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-                            <span style="color: #b78a60" class="ltext-101 cl2 respon2">
-                                HOT
-                            </span>
+								<span class="ltext-202 cl2 respon2">
+									HOT
+								</span>
                                 </div>
+
                                 <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-                                    <h2 style="color: #b78a60" class="flex-c-m ltext-201 cl2 p-t-19 p-b-43 respon1">
+                                    <h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
                                         {{ $slider->name }}
                                     </h2>
                                 </div>

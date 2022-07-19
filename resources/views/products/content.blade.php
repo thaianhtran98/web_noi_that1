@@ -23,6 +23,7 @@
             width: auto;
             font-size: 15px;
         }
+
     </style>
 
     <div class="container p-t-80">
@@ -55,6 +56,17 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
+
+                                <div class="item-slick3" data-thumb="{{ $product->thumb }}">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="{{ $product->thumb }}" alt="IMG-PRODUCT">
+
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ $product->thumb }}">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
 
                                 @foreach($img_detail as $img)
                                     <div class="item-slick3" data-thumb="{{ $img->thumb_detail }}">
@@ -102,9 +114,9 @@
                                 &nbsp;Sản phẩm của&nbsp;<a href="https://hoaphatnoithat.net.vn/" target="_blank" rel="noopener noreferrer">Nội Thất Phúc Thịnh</a><br>
                                 @else
                                     <strong>Xuất xứ:</strong>
-                                    &nbsp;Sản phẩm của&nbsp;<a href="https://hoaphatnoithat.net.vn/" target="_blank" rel="noopener noreferrer">   {{$product->origin}}</a><br>
+                                    &nbsp;Sản phẩm của&nbsp;<a>{{$product->origin}}</a><br>
                                 @endif
-                                <strong>Bảo hành:</strong>&nbsp;{{$product->warrantly}}<br>
+                                <strong>Bảo hành:</strong>&nbsp;{{$product->warranty}}<br>
                                 Giá chưa bao gồm vận chuyển<br>
                             </p>
                         </div>
@@ -159,13 +171,32 @@
         </div>
     </section>
 
+    <div class="product-footer">
+        <div class="woocommerce-tabs wc-tabs-wrapper container tabbed-content">
+            <ul class="tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-tabs nav-normal nav-left" role="tablist">
+                <li class="description_tab " style="font-family: Roboto, Sans-Serif; font-size: 36px;color: #717fe0" id="tab-title-description" role="tab" aria-controls="tab-description">
+                    <a >Mô tả sản phẩm </a>
+                </li>
+            </ul>
+            <div class="tab-panels">
+                <div id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" >
+                    {!! $product->content !!}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">
-            <div class="p-b-45">
-                <h3 style="font-family:  Roboto, Sans-Serif;" class="ltext-106 cl5 txt-center">
-                    Các sản phẩm khác
+            <hr>
+
+            <div class="p-b-10">
+                <h3 style="font-family:  Roboto, Sans-Serif;color: #717fe0" class="ltext-106 cl5">
+                    Các sản phẩm tương tự
                 </h3>
             </div>
+            <hr>
 
             @include('products.list')
         </div>

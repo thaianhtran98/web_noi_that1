@@ -272,18 +272,26 @@
                 const form = new FormData();
                 form.append('file', event.target.files[0]);
 
+                let name_sp = document.getElementById('name').value;
+                if (name_sp === ''){
+                    alert('Vui lòng nhập tên sản phẩm');
+                    return false;
+                }else {
+                    form.append('name_sp',name_sp)
+                }
+
                 $.ajax({
                     processData: false,
                     contentType: false,
                     cache :false,
                     type: 'POST',
                     dataType: 'JSON',
-                    data: form,
-                    url: '{{route('upload')}}',
+                    data:  form ,
+                    url: '{{route('upload_detail')}}',
                     success: function (results) {
                         if (results.error === false) {
                             box_image.append('<img src="' + results.url + '" class="picture-box">');
-                            box_image.append('<input type="hidden" name="img_detail[]" value="'+ results.url +'" >');
+                            box_image.append('<input type="hidden" name="img_detail[]" id="id_'+ time +'" value="'+ results.url +'" >');
                         } else {
                             alert('Upload File Lỗi');
                         }
@@ -295,22 +303,28 @@
 
                 $(this).removeAttr('id');
                 $(this).attr( 'id', time);
+
                 let input_type_file = '<input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">';
                 $('.list-input-hidden-upload').append(input_type_file);
             });
 
             $(".list-images").on('click', '.btn-delete-image', function(){
                 let id = $(this).data('id');
+                var img =  document.getElementById('id_'+id).value;
+
                 $('#'+id).remove();
                 $(this).parents('.box-image').remove();
 
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data:  {img} ,
+                    url: '{{route('upload_delete')}}',
+                });
 
             });
         });
 
     </script>
 
-    <script>
-
-    </script>
 @endsection

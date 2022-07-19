@@ -34,3 +34,10 @@
 {{--<link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/style.css">--}}
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+<style>
+    body{
+        font-family: Roboto, Sans-Serif;
+    }
+</style>

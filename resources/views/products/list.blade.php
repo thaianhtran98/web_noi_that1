@@ -4,7 +4,9 @@
             <!-- Block2 -->
             <div class="block2">
                 <div class="block2-pic hov-img0">
-                    <img src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                    <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}">
+                        <img src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                    </a>
                 </div>
 
                 <div class="block2-txt flex-w flex-t p-t-14">

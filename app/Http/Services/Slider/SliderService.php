@@ -53,9 +53,7 @@ class SliderService
         $slider = Slider::where('id', $request->input('id'))->first();
         if ($slider) {
             $path = str_replace('/web_noi_that1/public/storage', 'public', $slider->thumb);
-//            dd($path);
             Storage::delete($path);
-
             $slider->delete();
             return true;
         }

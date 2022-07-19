@@ -67,7 +67,6 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
-
         $result = $this->productService->delete($request);
         if ($result) {
             return response()->json([

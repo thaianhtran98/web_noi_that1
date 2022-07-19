@@ -4,6 +4,7 @@
 namespace App\Http\Services;
 
 
+use App\Models\products_detail;
 use Illuminate\Support\Facades\Storage;
 
 class UploadService
@@ -31,22 +32,53 @@ class UploadService
         }
     }
 
+    public function store_img_detail($request)
+    {
+        if ($request->hasFile('file')) {
+            try {
+                $name = $request->file('file')->getClientOriginalName();
 
-//    public function store_thumb($request){
-//        if($request->hasFile('thumb')){
-//            try {
-//                $name= $request->file('thumb')->getClientOriginalName();
-//
-//                $pathFull ='uploads/thumb';
-//                $path = $request->file('thumb')->storeAs(
-//                    'public/'. $pathFull , $name
-//                );
-//
-//                return '/storage/' . $pathFull . '/' . $name;
-//            }catch (\Exception $error){
-//                return false;
-//            }
-//        }
-//    }
+//                $request->input('name_sp'));
+
+                $pathFull = 'uploads_detail/' . $request->input('name_sp') ;
+
+                $request->file('file')->storeAs(
+                    '/public/' . $pathFull, $name
+                );
+                return '/web_noi_that1/public/storage/' . $pathFull . '/' . $name;
+            } catch (\Exception $error) {
+                return false;
+            }
+        }
+    }
+
+
+    public function store_slider($request)
+    {
+        if ($request->hasFile('file')) {
+            try {
+                $name = $request->file('file')->getClientOriginalName();
+
+                $pathFull = 'uploads_slider' ;
+
+                $request->file('file')->storeAs(
+                    '/public/' . $pathFull, $name
+                );
+                return '/web_noi_that1/public/storage/' . $pathFull . '/' . $name;
+            } catch (\Exception $error) {
+                return false;
+            }
+        }
+    }
+
+
+    public function delete($request)
+    {
+        products_detail::where('thumb_detail',$request->img)->delete();
+        $path = str_replace('/web_noi_that1/public/storage', 'public', $request->img);
+        Storage::delete($path);
+        return true;
+    }
+
 
 }

@@ -29,15 +29,47 @@ class UploadController extends Controller
         return response()->json(['error' => true]);
     }
 
-//    public function store_thumb(Request $request){
-//        $url = $this->upload->store_thumb($request);
-//        if($url!=false){
-//            return response()->json([
-//                'error'=>false,
-//                'url'=>$url,
-//            ]);
-//        }
-//        return response()->json(['error'=>true]);
-//    }
+    public function store_img_detail(Request $request)
+    {
+
+        $url = $this->upload->store_img_detail($request);
+        if ($url !== false) {
+            return response()->json([
+                'error' => false,
+                'url'   => $url
+            ]);
+        }
+
+        return response()->json(['error' => true]);
+    }
+
+    public function store_slider(Request $request)
+    {
+
+        $url = $this->upload->store_slider($request);
+        if ($url !== false) {
+            return response()->json([
+                'error' => false,
+                'url'   => $url
+            ]);
+        }
+
+        return response()->json(['error' => true]);
+    }
+
+
+    public function delete(Request $request)
+    {
+
+        $url = $this->upload->delete($request);
+        if ($url !== false) {
+            return response()->json([
+                'error' => false,
+            ]);
+        }
+
+        return response()->json(['error' => true]);
+    }
+
 
 }

@@ -30,11 +30,12 @@ class ProductService
             ->firstOrFail();
     }
 
-    public function more($id)
+    public function more($id,$menu_id)
     {
         return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
             ->where('id', '!=', $id)
+            ->where('menu_id',$menu_id)
             ->orderByDesc('id')
             ->limit(8)
             ->get();

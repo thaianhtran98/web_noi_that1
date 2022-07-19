@@ -45,7 +45,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="menu">Tên Sản Phẩm</label>
-                        <input type="text" name="name" value="{{ $product->name }}" class="form-control"
+                        <input type="text" name="name"  id="name" value="{{ $product->name }}" class="form-control"
                                placeholder="Nhập tên sản phẩm">
                     </div>
                 </div>
@@ -124,7 +124,7 @@
             </div>
 
             <div class="form-group">
-                <label for="menu">Ảnh Sản Phẩm</label>
+                <label for="menu">Ảnh Chính Sản Phẩm</label>
                 <input type="file"  class="form-control" id="upload">
                 <div id="image_show">
                     <a href="{{ $product->thumb }}" target="_blank">
@@ -137,6 +137,9 @@
             <label for="menu">Ảnh Chi Tiết Sản Phẩm </label></br>
             <div class="input-group hdtuto control-group lst increment" >
                 <div class="list-input-hidden-upload">
+                    @foreach($img_detail as $img)
+                        <input type="file" name="filenames[]" class="myfrm form-control hidden" id="{{$img->id}}">
+                    @endforeach
                     <input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">
                 </div>
                 <div class="input-group-btn">
@@ -147,9 +150,10 @@
 
                 @foreach($img_detail as $img)
                     <div class="box-image">
-                        <input type="hidden" name="images_uploaded[]" value="{{ $img }}" id="{{$img->thumb_detail }}">
+                        <input type="hidden" name="images_uploaded[]" value="{{ $img->thumb_detail }}" id="">
                         <img src="{{ $img->thumb_detail }}" class="picture-box">
-                        <div class="wrap-btn-delete"><span data-id="{{$img->thumb_detail }}" class="btn-delete-image">x</span></div>
+                        <div class="wrap-btn-delete"><span data-id="{{$img->id}}" class="btn-delete-image">x</span></div>
+                        <input type="hidden" name="img_detail[]" id="id_{{$img->id}}" value="{{$img->thumb_detail}}" >
                     </div>
                 @endforeach
 
@@ -238,6 +242,7 @@
             });
         });
 
+
         $(document).ready(function() {
             $(".btn-add-image").click(function(){
                 $('#file_upload').trigger('click');
@@ -253,18 +258,26 @@
                 const form = new FormData();
                 form.append('file', event.target.files[0]);
 
+                let name_sp = document.getElementById('name').value;
+                if (name_sp === ''){
+                    alert('Vui lòng nhập tên sản phẩm');
+                    return false;
+                }else {
+                    form.append('name_sp',name_sp)
+                }
+
                 $.ajax({
                     processData: false,
                     contentType: false,
                     cache :false,
                     type: 'POST',
                     dataType: 'JSON',
-                    data: form,
-                    url: '{{route('upload')}}',
+                    data:  form ,
+                    url: '{{route('upload_detail')}}',
                     success: function (results) {
                         if (results.error === false) {
                             box_image.append('<img src="' + results.url + '" class="picture-box">');
-                            box_image.append('<input type="hidden" name="img_detail[]" value="'+ results.url +'" >');
+                            box_image.append('<input type="hidden" name="img_detail[]" id="id_'+ time +'" value="'+ results.url +'" >');
                         } else {
                             alert('Upload File Lỗi');
                         }
@@ -276,15 +289,25 @@
 
                 $(this).removeAttr('id');
                 $(this).attr( 'id', time);
+
                 let input_type_file = '<input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">';
                 $('.list-input-hidden-upload').append(input_type_file);
             });
 
+
             $(".list-images").on('click', '.btn-delete-image', function(){
                 let id = $(this).data('id');
+                var img =  document.getElementById('id_'+id).value;
+
                 $('#'+id).remove();
                 $(this).parents('.box-image').remove();
 
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'JSON',
+                    data:  {img} ,
+                    url: '{{route('upload_delete')}}',
+                });
 
             });
         });

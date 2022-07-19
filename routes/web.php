@@ -51,7 +51,9 @@ Route::middleware(['auth'])->group(function () {
 
         #Upload
         Route::post('upload/services', [\App\Http\Controllers\Admin\UploadController::class, 'store'])->name('upload');
-//        Route::POST('upload_thumb/services',[\App\Http\Controllers\Admin\UploadController::class,'store_thumb']);
+        Route::post('upload_detail/services', [\App\Http\Controllers\Admin\UploadController::class, 'store_img_detail'])->name('upload_detail');
+        Route::post('upload_slider/services', [\App\Http\Controllers\Admin\UploadController::class, 'store_slider'])->name('upload_slider');
+        Route::post('upload/services/delete', [\App\Http\Controllers\Admin\UploadController::class, 'delete'])->name('upload_delete');
 
         #Cart
         Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
@@ -66,8 +68,8 @@ Route::get('danh-muc/{id}-{slug}.html', [App\Http\Controllers\MenuController::cl
 Route::get('san-pham/{id}-{slug}.html', [App\Http\Controllers\ProductController::class, 'index'])->name('index_sanpam');
 
 Route::post('add-cart', [App\Http\Controllers\CartController::class, 'index'])->name('add_cart');
-Route::get('carts', [App\Http\Controllers\CartController::class, 'show']);
-Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update']);
-Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove']);
-Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart'])->name('add_cart');
+Route::get('carts', [App\Http\Controllers\CartController::class, 'show'])->name('show_cart');
+Route::post('update-cart', [App\Http\Controllers\CartController::class, 'update'])->name('update_cart');
+Route::get('carts/delete/{id}', [App\Http\Controllers\CartController::class, 'remove'])->name('remove_cart');
+Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart'])->name('add_sp_cart');
 //Route::post('carts', [App\Http\Controllers\CartController::class, 'addCart']);

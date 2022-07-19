@@ -1,4 +1,4 @@
-<header>
+<header class="header-v2">
     @php
         $menusHtml = \App\Helpers\Helper::menus($menus);
         $menusHtml2 = \App\Helpers\Helper::menus_m($menus1);
@@ -9,7 +9,7 @@
             .main-menu > li > a {
                 font-family: Roboto, Sans-Serif;
                 font-size: 18px;
-                color: #333;
+                color: #fffffc;
                 padding: 5px 0px;
                 transition: all 0.4s;
                 -webkit-transition: all 0.4s;
@@ -27,7 +27,7 @@
                 left:100%;
                 min-width: 178px;
                 max-width: 225px;
-                background-color: #fff;
+                background-color: #575757;
                 transition: all 0.4s;
                 -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
@@ -63,12 +63,10 @@
                 font-family: Roboto, Sans-Serif;
                 font-size: 18px;
                 line-height: 1.5;
-                color: #555;
-
+                color: #fffffc;
                 display: block;
                 padding: 8px 20px;
                 width: 100%;
-
                 transition: all 0.4s;
                 -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
@@ -90,32 +88,57 @@
                 transition: height 0.3s, background-color 0.3s;
             }
 
+            .main-menu > li:hover > a {
+                text-decoration: none;
+                background: -webkit-linear-gradient(top, rgb(143, 107, 41), rgb(253, 224, 141), rgb(223, 159, 40));
+                background: linear-gradient(top, rgb(143, 107, 41), rgb(253, 224, 141), rgb(223, 159, 40));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .sub-menu > li:hover > a {
+                text-decoration: none;
+                background: -webkit-linear-gradient(top,rgb(143, 107, 41), rgb(253, 224, 141), rgb(223, 159, 40));
+                background: linear-gradient(top, rgb(143, 107, 41), rgb(253, 224, 141), rgb(223, 159, 40));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         </style>
-    <div class="container-menu-desktop" >
+    <div class="container-menu-desktop trans-03"  >
         <div class="wrap-menu-desktop">
-            <nav class="limiter-menu-desktop container">
+            <nav class="limiter-menu-desktop p-l-45" style="background-color: #575757">
                 <a href="{{route('home')}}" class="logo">
-                    <img src="/web_noi_that1/public/template/admin/dist/img/09a1b65a422c8172d83d.jpg" >
+                    <img src="/web_noi_that1/public/template/admin/dist/img/gold3.jpg" >
                 </a>
 
                 <!-- Menu desktop -->
                 <div class="menu-desktop" style="width: auto">
                     <ul class="main-menu">
-                        <li class="active-menu"><a href="{{route('home')}}">Trang Chủ</a> </li>
+                        <li class=""><a href="{{route('home')}}">Trang Chủ</a> </li>
                         {!!$menusHtml!!}
                     </ul>
                 </div>
                 <!-- Icon header -->
-                <div class="wrap-icon-header flex-w flex-r-m">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-                        <i class="zmdi zmdi-search"></i>
+{{--               z--}}
+
+                <!-- Icon header -->
+                <div class="wrap-icon-header flex-w flex-r-m h-full">
+                    <div class="flex-c-m h-full p-r-24">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                            <i style="color: #fffffc" class="zmdi zmdi-search"></i>
+                        </div>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                         data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                    <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                             data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
+                            <i style="color: #fffffc" class="zmdi zmdi-shopping-cart"></i>
+                        </div>
                     </div>
+
+
                 </div>
+
             </nav>
         </div>
     </div>
@@ -125,7 +148,7 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="{{route('home')}}"><img src="/web_noi_that1/public/template/admin/dist/img/09a1b65a422c8172d83d.jpg" alt="IMG-LOGO"></a>
+            <a href="{{route('home')}}"><img src="/web_noi_that1/public/template/admin/dist/img/gold3.jpg" ></a>
         </div>
 
         <!-- Icon header -->

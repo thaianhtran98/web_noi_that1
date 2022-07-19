@@ -66,7 +66,7 @@
                 type: 'POST',
                 dataType: 'JSON',
                 data: form,
-                url: '{{route('upload')}}',
+                url: '{{route('upload_slider')}}',
                 success: function (results) {
                     if (results.error === false) {
                         $('#image_show').html('<a href="' + results.url + '" target="_blank">' +

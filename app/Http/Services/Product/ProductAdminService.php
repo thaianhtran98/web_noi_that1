@@ -37,6 +37,7 @@ class ProductAdminService
 
     public function insert($request)
     {
+//        dd($request->input('img_detail'));
         $isValidPrice = $this->isValidPrice($request);
         if ($isValidPrice === false) return false;
 
@@ -47,11 +48,13 @@ class ProductAdminService
 
             $product = Product::orderByDesc('id')->first();
 
-            foreach ($request->input('img_detail') as $img_detail){
-                products_detail::create([
-                    'id_sp'=>(integer)$product->id,
-                    'thumb_detail'=>(string)$img_detail,
-                ]);
+            if ($request->input('img_detail')!=null ){
+                foreach ($request->input('img_detail') as $img_detail){
+                    products_detail::create([
+                        'id_sp'=>(integer)$product->id,
+                        'thumb_detail'=>(string)$img_detail,
+                    ]);
+                }
             }
 
             Session::flash('success', 'Thêm Sản phẩm thành công');
@@ -72,12 +75,25 @@ class ProductAdminService
 
     public function update($request, $product)
     {
+
         $isValidPrice = $this->isValidPrice($request);
         if ($isValidPrice === false) return false;
 
         try {
             $product->fill($request->input());
             $product->save();
+
+            products_detail::where('id_sp',$product->id)->delete();
+
+            if ($request->input('img_detail')!=null ){
+                foreach ($request->input('img_detail') as $img_detail){
+                    products_detail::create([
+                        'id_sp'=>(integer)$product->id,
+                        'thumb_detail'=>(string)$img_detail,
+                    ]);
+                }
+            }
+
             Session::flash('success', 'Cập nhật thành công');
         } catch (\Exception $err) {
             Session::flash('error', 'Có lỗi vui lòng thử lại');
@@ -93,6 +109,8 @@ class ProductAdminService
         if ($product) {
             $path = str_replace('/web_noi_that1/public/storage', 'public', $product->thumb);
             Storage::delete($path);
+            $path_detail =  'public/uploads_detail/' . $product->name;
+            Storage::deleteDirectory($path_detail);
             $product->delete();
             return true;
         }
