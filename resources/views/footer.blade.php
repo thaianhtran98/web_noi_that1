@@ -270,4 +270,6 @@
 <!--===============================================================================================-->
 <script src="/web_noi_that1/public/template/js/main.js"></script>
 {{--<script src="/web_noi_that1/public/template/js/public.js"></script>--}}
+<script src="/web_noi_that1/public/template/owlcarousel/owl.carousel.min.js"></script>
+
 @yield('footer')

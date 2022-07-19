@@ -29,7 +29,13 @@
     <div class="container p-t-80">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
             <a href="{{route('home')}}" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
+                Trang chủ
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <a href="{{  route('index_danhmuc',[$product->menu->menu_parent($product->menu)->id ,Str::slug($product->menu->menu_parent($product->menu)->name , "-")]) }}"
+               class="stext-109 cl8 hov-cl1 trans-04">
+                {{ $product->menu->menu_parent($product->menu)->name }}
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -111,7 +117,7 @@
                                 <strong>Kiểu dáng:&nbsp;</strong>{{$product->style}}<br>
                                 @if($product->origin == null)
                                 <strong>Xuất xứ:</strong>
-                                &nbsp;Sản phẩm của&nbsp;<a href="https://hoaphatnoithat.net.vn/" target="_blank" rel="noopener noreferrer">Nội Thất Phúc Thịnh</a><br>
+                                &nbsp;Sản phẩm của&nbsp;<a href="{{route('home')}}" target="_blank" rel="noopener noreferrer">Nội Thất Phúc Thịnh</a><br>
                                 @else
                                     <strong>Xuất xứ:</strong>
                                     &nbsp;Sản phẩm của&nbsp;<a>{{$product->origin}}</a><br>

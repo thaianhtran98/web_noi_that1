@@ -68,14 +68,17 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="menu">Giá Gốc</label>
-                        <input type="number" name="price" value="{{ $product->price }}"  class="form-control" >
+                        <input type="text" name="price_input" id="price_input" value="{{ $product->price }}"  placeholder="Nhập giá gốc" class="form-control" />
+
+                        <input type="number" hidden name="price" id="price" value="{{ $product->price }}"  class="form-control"/>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="menu">Giá Giảm</label>
-                        <input type="number" name="price_sale" value="{{ $product->price_sale }}"  class="form-control" >
+                        <input type="text" name="price_input_sale" id="price_input_sale" value="{{ $product->price_sale }}" placeholder="Nhập giá giảm" class="form-control" />
+                        <input type="number" hidden name="price_sale" id="price_sale" value="{{ $product->price_sale }}"  class="form-control" />
                     </div>
                 </div>
             </div>
@@ -214,6 +217,117 @@
 @endsection
 
 @section('footer')
+    <script>
+
+        $(document).ready(function () {
+            for (var i = 0 ; i<sessionStorage.length ; i++){
+                var thuoc_tinh = sessionStorage.key(i);
+                console.log(thuoc_tinh);
+                if(sessionStorage.getItem(thuoc_tinh)){
+                    var dm = document.getElementById('neo_'+thuoc_tinh);
+                    dm.style.color = 'dodgerblue';
+                    document.getElementById(thuoc_tinh).value =sessionStorage.getItem(thuoc_tinh);
+                }
+            }
+        });
+
+        function neo(thuoctinh){
+            var neo = document.getElementById('neo_'+thuoctinh);
+            if(neo.style.color === 'dodgerblue'){
+                sessionStorage.removeItem(thuoctinh);
+                neo.style.color = 'black';
+            }else{
+                sessionStorage.setItem(thuoctinh,document.getElementById(thuoctinh).value);
+                neo.style.color = 'dodgerblue';
+            }
+        }
+
+
+        $('#name').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#menu_id').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#menu_id').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#price_input').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+
+        $('#price_input').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#price_input_sale').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#price_input_sale').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#material').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#material').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#color').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#color').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#style').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#style').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#size').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#size').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#origin').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#origin').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#warranty').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#warranty').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#upload').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#upload').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#btn_file_upload').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#btn_file_upload').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#btn_add').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+    </script>
 
 
     <script>
@@ -314,7 +428,125 @@
 
     </script>
 
+    <script type="text/javascript" src="/web_noi_that1/public/template/admin/Inputmask/dist/jquery.inputmask.js"></script>
+    <script type="text/javascript" src="/web_noi_that1/public/template/admin/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+    {{--    <link rel="stylesheet" href="/web_noi_that1/public/template/admin/ui/jquery-ui.css"/>--}}
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    {{--    <script src="/web_noi_that1/public/template/js/popper.min.js"></script>--}}
     <script>
 
+        $(document).ready(function () {
+            var price_input = document.getElementById("price_input");
+            Inputmask({
+                // prefix: "VNĐ ",
+                thousandsSeparator: ',000 ',
+                alias: "currency",
+                digits: 0,
+                digitsOptional: false,
+                clearMaskOnLostFocus: false,
+                rightAlign: false,
+                unmaskAsNumber: true,
+                'oncomplete': function () {
+                    document.getElementById('price').value = document.getElementById('price_input').value.replace(',','');
+                    if(document.getElementById('price_input').value !== document.getElementById('price').value){
+                        var str =  document.getElementById('price_input').value;
+                        document.getElementById('price').value = str.split(',').join('');
+                    }
+                    if(sessionStorage.getItem('price_input')){
+                        sessionStorage.setItem('price_input',document.getElementById('price_input').value);
+                    }
+                }
+            }).mask(price_input);
+
+            var price_input_sale = document.getElementById("price_input_sale");
+            Inputmask({
+                // prefix: "VNĐ ",
+                alias: "currency",
+                digits: 0,
+                digitsOptional: false,
+                clearMaskOnLostFocus: false,
+                rightAlign: false,
+                unmaskAsNumber: true,
+                'oncomplete': function () {
+                    if(document.getElementById('price_input_sale').value !== document.getElementById('price_sale').value){
+                        var str =  document.getElementById('price_input_sale').value;
+                        document.getElementById('price_sale').value = str.split(',').join('');
+                    }
+                    if(sessionStorage.getItem('price_input_sale')){
+                        sessionStorage.setItem('price_input_sale',document.getElementById('price_input_sale').value);
+                    }
+                }
+            }).mask(price_input_sale);
+
+
+            if(sessionStorage.getItem('price_input_sale')){
+                var str =  document.getElementById('price_input_sale').value;
+                document.getElementById('price_sale').value = str.split(',').join('');
+            }
+
+            if(sessionStorage.getItem('price_input')){
+                var str =  document.getElementById('price_input').value;
+                document.getElementById('price').value = str.split(',').join('');
+            }
+
+
+        });
+
+        document.querySelector('#menu_id').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('menu_id')){
+                sessionStorage.setItem('menu_id',document.getElementById('menu_id').value);
+            }
+        })
+
+        document.querySelector('#price_input').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('price_input')){
+                sessionStorage.setItem('price_input',document.getElementById('price_input').value);
+            }
+        })
+
+        document.querySelector('#price_input_sale').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('price_input_sale')){
+                sessionStorage.setItem('price_input_sale',document.getElementById('price_input_sale').value);
+            }
+        })
+
+        document.querySelector('#material').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('material')){
+                sessionStorage.setItem('material',document.getElementById('material').value);
+            }
+        })
+
+        document.querySelector('#color').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('color')){
+                sessionStorage.setItem('color',document.getElementById('color').value);
+            }
+        })
+
+        document.querySelector('#style').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('style')){
+                sessionStorage.setItem('style',document.getElementById('style').value);
+            }
+        })
+
+        document.querySelector('#size').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('size')){
+                sessionStorage.setItem('size',document.getElementById('size').value);
+            }
+        })
+
+        document.querySelector('#origin').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('origin')){
+                sessionStorage.setItem('origin',document.getElementById('origin').value);
+            }
+        })
+
+        document.querySelector('#warranty').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('warranty')){
+                sessionStorage.setItem('warranty',document.getElementById('warranty').value);
+            }
+        })
+
     </script>
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Services\Menu;
 
 
 use App\Models\Menu;
+use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -36,7 +37,8 @@ class MenuService
                 'parent_id' => (int)$request->input('parent_id'),
                 'description' => (string)$request->input('description'),
                 'content' => (string)$request->input('content'),
-                'active' => (string)$request->input('active')
+                'active' => (string)$request->input('active'),
+                'sort' => (string)$request->input('sort'),
             ]);
 
             Session::flash('success', 'Tạo Danh Mục Thành Công');
@@ -58,6 +60,7 @@ class MenuService
         $menu->description = (string)$request->input('description');
         $menu->content = (string)$request->input('content');
         $menu->active = (string)$request->input('active');
+        $menu->sort = (string)$request->input('sort');
         $menu->save();
 
         Session::flash('success', 'Cập nhật thành công Danh mục');
@@ -81,11 +84,17 @@ class MenuService
         return Menu::where('id', $id)->where('active', 1)->firstOrFail();
     }
 
+    public function getchild($id)
+    {
+        return Menu::where('parent_id', $id)->get();
+    }
+
+
     public function getProduct($menu, $request)
     {
 
         $query = $menu->products()
-            ->select('id', 'name', 'price', 'price_sale', 'thumb')
+            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id')
             ->where('active', 1);
 
         if ($request->input('price')) {
@@ -97,4 +106,29 @@ class MenuService
             ->paginate(12)
             ->withQueryString();
     }
+
+    public function getProduct_menuParent($menu, $request)
+    {
+
+        $menu = Menu::where('parent_id',$menu->id)->get();
+
+        $arr = [];
+        foreach ($menu as $m)
+           $arr[]=$m->id;
+
+        $query = Product::whereIn('menu_id',$arr)
+            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id')
+            ->where('active', 1);
+
+        if ($request->input('price')) {
+            $query->orderBy('price', $request->input('price'));
+        }
+
+        return $query
+            ->orderByDesc('id')
+            ->paginate(12)
+            ->withQueryString();
+    }
+
+//    public
 }

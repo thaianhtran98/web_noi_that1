@@ -11,7 +11,7 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/web_noi_that1/public/template/admin/dist/img/09a1b65a422c8172d83d.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="/web_noi_that1/public/template/admin/dist/img/gold.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="{{route('admin')}}" class="d-block">Quản Trị Viên</a>

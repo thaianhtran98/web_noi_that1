@@ -14,6 +14,11 @@
             </div>
 
             <div class="form-group">
+                <label for="menu">Thứ tự sắp xếp</label>
+                <input type="number" name="sort" id="sort" value="0" class="form-control"  placeholder="Nhập thứ tự sắp xếp">
+            </div>
+
+            <div class="form-group">
                 <label>Danh Mục</label>
                 <select class="form-control" id="parent_id" name="parent_id">
                     <option value="0"> Danh Mục Cha </option>
@@ -61,28 +66,25 @@
 
         $('#name').keypress(function (event) {
             if (event.keyCode == 13 || event.which == 13) {
+                $('#sort').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#sort').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
                 $('#parent_id').focus();
                 event.preventDefault(); //preventDefault() Không load lại form
             }
         });
+
         $('#parent_id').keypress(function (event) {
             if (event.keyCode == 13 || event.which == 13) {
-                $('#description').focus();
+                $('#price').focus();
                 event.preventDefault(); //preventDefault() Không load lại form
             }
         });
-        // $('#description').keypress(function (event) {
-        //     if (event.keyCode == 13 || event.which == 13) {
-        //         $('#content_x').focus();
-        //         event.preventDefault(); //preventDefault() Không load lại form
-        //     }
-        // });
-        $('#description').keypress(function (event) {
-            if (event.keyCode == 13 || event.which == 13) {
-                $('#btn').focus();
-                event.preventDefault(); //preventDefault() Không load lại form
-            }
-        });
+
 
     </script>
 @endsection

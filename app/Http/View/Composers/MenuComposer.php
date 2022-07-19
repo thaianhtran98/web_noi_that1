@@ -15,7 +15,7 @@ class MenuComposer
 
     public function compose(View $view)
     {
-        $menus = Menu::select('id', 'name', 'parent_id')->where('active', 1)->orderByDesc('id')->get();
+        $menus = Menu::select('id', 'name', 'parent_id')->where('active', 1)->orderByDesc('sort')->get();
         $view
             ->with('menus', $menus)
             ->with('menus1', $menus);

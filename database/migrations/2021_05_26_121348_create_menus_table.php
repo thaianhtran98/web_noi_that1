@@ -19,8 +19,8 @@ class CreateMenusTable extends Migration
             $table->integer('parent_id');
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
-//            $table->string('slug', 255)->unique();
             $table->integer('active');
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }

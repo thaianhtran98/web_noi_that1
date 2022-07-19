@@ -53,7 +53,7 @@ class Helper
                 if ($menu->parent_id == 0){
                     $html .= '
                     <li>
-                        <a href="#">
+                        <a href="'. route('index_danhmuc',[$menu->id,Str::slug($menu->name, "-")]).' ">
                             ' . $menu->name . '
                         </a>';
                 }else{
@@ -85,7 +85,7 @@ class Helper
                 if ($menu->parent_id == 0){
                     $html1 .= '
                     <li>
-                        <a href="#">
+                         <a href="'. route('index_danhmuc',[$menu->id,Str::slug($menu->name, "-")]).' ">
                             ' . $menu->name . '
                         </a>';
                 }else{

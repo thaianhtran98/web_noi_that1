@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $title }}</title>
-<link rel="icon" type="image/png" href="/web_noi_that1/public/template/admin/dist/img/09a1b65a422c8172d83d.jpg"/>
+<link rel="icon" type="image/png" href="/web_noi_that1/public/template/admin/dist/img/gold.jpg"/>
 
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
@@ -14,7 +14,7 @@
 <!-- icheck bootstrap -->
 <link rel="stylesheet" href="/web_noi_that1/public/template/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 {{--<!-- Theme style -->--}}
-<link rel="stylesheet" href="/thuctap1/public/template/admin/plugins/fontawesome-free/css/all.min.css">
+{{--<link rel="stylesheet" href="/thuctap1/public/template/admin/plugins/fontawesome-free/css/all.min.css">--}}
 
 <!-- Theme style -->
 <link rel="stylesheet" href="/web_noi_that1/public/template/admin/dist/css/adminlte.min.css">

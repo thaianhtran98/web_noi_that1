@@ -43,11 +43,15 @@
     <form action="{{route('store_sp')}}" method="POST"  enctype="multipart/form-data">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="menu">Tên Sản Phẩm</label>
                         <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control"  placeholder="Nhập tên sản phẩm">
                     </div>
+                </div>
+
+                <div class="col-md-1">
+
                 </div>
 
                 <div class="col-md-5">
@@ -61,8 +65,8 @@
                     </div>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" style="margin-top: 35px; border: 0" onclick="neo_danhmuc()">
-                        <span id="neo_danhmuc" style="font-size: 14px;color: black;">
+                    <button type="button" style="margin-top: 35px; border: 0" onclick="neo('menu_id')">
+                        <span id="neo_menu_id" style="font-size: 14px;color: black;">
                             <i class="fas fa-anchor"></i>
                         </span>
                     </button>
@@ -70,53 +74,145 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="menu">Giá Gốc</label>
-                        <input type="number" name="price" id="price" value="{{ old('price') }}" placeholder="Nhập giá gốc" class="form-control" >
+                        <input type="text" name="price_input" id="price_input" value="{{ old('price_input') }}" placeholder="Nhập giá gốc" class="form-control" >
+                        <input type="number" name="price" hidden id="price" value="{{ old('price_input_sale') }}" placeholder="Nhập giá giảm" class="form-control" >
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-1">
+                    <button type="button" style="margin-top: 35px; border: 0" onclick="neo('price_input')">
+                        <span id="neo_price_input" style="font-size: 14px;color: black;">
+                            <i class="fas fa-anchor"></i>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="menu">Giá Giảm</label>
-                        <input type="number" name="price_sale" id="price_sale" value="{{ old('price_sale') }}" placeholder="Nhập giá giảm" class="form-control" >
+                        <input type="text" name="price_input_sale" id="price_input_sale" value="{{ old('price_input_sale') }}" placeholder="Nhập giá giảm" class="form-control" >
+                        <input type="number" name="price_sale" hidden id="price_sale" value="{{ old('price_input_sale') }}" placeholder="Nhập giá giảm" class="form-control" >
                     </div>
+                </div>
+
+                <div class="col-md-1">
+                    <button type="button" style="margin-top: 35px; border: 0" onclick="neo('price_input_sale')">
+                        <span id="neo_price_input_sale" style="font-size: 14px;color: black;">
+                            <i class="fas fa-anchor"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
 
             <div class="row">
                 <div  class="col-md-6">
                     <div class="form-group">
-                        <label for="menu">Chất Liệu</label>
-                        <input type="text" name="material" id="material" class="form-control" placeholder="Nhập chất liệu" >
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Chất Liệu</label>
+                                <input type="text" name="material" id="material" class="form-control" placeholder="Nhập chất liệu" >
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('material')">
+                                <span id="neo_material" style="font-size: 14px;color: black;">
+                                    <i class="fas fa-anchor"></i>
+                                </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="menu">Kiểu Dáng</label>
-                        <input type="text" name="style" id="style" class="form-control" placeholder="Nhập kiểu dáng" >
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Kiểu Dáng</label>
+                                <input type="text" name="style" id="style" class="form-control" placeholder="Nhập kiểu dáng" >
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('style')">
+                                <span id="neo_style" style="font-size: 14px;color: black;">
+                                    <i class="fas fa-anchor"></i>
+                                </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="menu">Xuất Xứ</label>
-                        <input type="text" name="origin" id="origin" class="form-control" placeholder="Nhập xuất xứ">
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Xuất Xứ</label>
+                                <input type="text" name="origin" id="origin" class="form-control" placeholder="Nhập xuất xứ">
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('origin')">
+                                    <span id="neo_origin" style="font-size: 14px;color: black;">
+                                        <i class="fas fa-anchor"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div  class="col-md-6">
                     <div class="form-group">
-                        <label for="menu">Màu Sắc</label>
-                        <input type="text" name="color" id="color" class="form-control" placeholder="Nhập màu sắc" >
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Màu Sắc</label>
+                                <input type="text" name="color" id="color" class="form-control" placeholder="Nhập màu sắc" >
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('color')">
+                                <span id="neo_color" style="font-size: 14px;color: black;">
+                                    <i class="fas fa-anchor"></i>
+                                </span>
+                                </button>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="menu">Kích Cỡ</label>
-                        <input type="text" name="size"  id="size" class="form-control" placeholder="Nhập kích cỡ" >
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Kích Cỡ</label>
+                                <input type="text" name="size" id="size" class="form-control" placeholder="Nhập kích cỡ" >
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('size')">
+                                <span id="neo_size" style="font-size: 14px;color: black;">
+                                    <i class="fas fa-anchor"></i>
+                                </span>
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="form-group">
-                        <label for="menu">Bảo hành</label>
-                        <input type="text" name="warranty" id="warranty" class="form-control" placeholder="Nhập thời gian bảo hành" >
+                        <div class="row">
+                            <div class="col-md-10" >
+                                <label for="menu">Bảo hành</label>
+                                <input type="text" name="warranty" id="warranty" class="form-control" placeholder="Nhập thời gian bảo hành" >
+                            </div>
+
+                            <div class="col-md-1" style="padding-right: 0px ">
+                                <button type="button" style="margin-top: 35px; border: 0" onclick="neo('warranty')">
+                                    <span id="neo_warranty" style="font-size: 14px;color: black;">
+                                        <i class="fas fa-anchor"></i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -142,7 +238,7 @@
                     <input type="file" name="filenames[]" id="file_upload" class="myfrm form-control hidden">
                 </div>
                 <div class="input-group-btn">
-                    <button class="btn btn-success btn-add-image" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>+Add image</button>
+                    <button class="btn btn-success btn-add-image" id="btn_file_upload" type="button"><i class="fldemo glyphicon glyphicon-plus"></i>+Add image</button>
                 </div>
             </div>
             <div class="list-images">
@@ -196,7 +292,7 @@
 {{--        <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Thêm Sản Phẩm</button>
+            <button type="submit" id="btn_add" class="btn btn-primary">Thêm Sản Phẩm</button>
         </div>
         @csrf
     </form>
@@ -204,30 +300,115 @@
 
 @section('footer')
     <script>
-        document.querySelector('#menu_id').addEventListener('change', (event) => {
-            if(sessionStorage.getItem('ct')){
-                sessionStorage.setItem('ct',document.getElementById('menu_id').value);
-            }
-        })
 
         $(document).ready(function () {
-            if(sessionStorage.getItem('ct')){
-                var dm = document.getElementById('neo_danhmuc');
-                dm.style.color = 'dodgerblue';
-                document.getElementById('menu_id').value =sessionStorage.getItem('ct');
+            for (var i = 0 ; i<sessionStorage.length ; i++){
+                var thuoc_tinh = sessionStorage.key(i);
+                console.log(thuoc_tinh);
+                if(sessionStorage.getItem(thuoc_tinh)){
+                    var dm = document.getElementById('neo_'+thuoc_tinh);
+                    dm.style.color = 'dodgerblue';
+                    document.getElementById(thuoc_tinh).value =sessionStorage.getItem(thuoc_tinh);
+                }
             }
         });
 
-        function neo_danhmuc(){
-            var dm = document.getElementById('neo_danhmuc');
-            if(dm.style.color === 'dodgerblue'){
-                sessionStorage.removeItem('ct');
-                dm.style.color = 'black';
+        function neo(thuoctinh){
+            var neo = document.getElementById('neo_'+thuoctinh);
+            if(neo.style.color === 'dodgerblue'){
+                sessionStorage.removeItem(thuoctinh);
+                neo.style.color = 'black';
             }else{
-                sessionStorage.setItem('ct',document.getElementById('menu_id').value);
-                dm.style.color = 'dodgerblue';
+                sessionStorage.setItem(thuoctinh,document.getElementById(thuoctinh).value);
+                neo.style.color = 'dodgerblue';
             }
         }
+
+
+        $('#name').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#menu_id').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#menu_id').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#price_input').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+
+        $('#price_input').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#price_input_sale').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#price_input_sale').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#material').focus();
+                event.preventDefault();
+            }
+        });
+
+        $('#material').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#color').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#color').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#style').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#style').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#size').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#size').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#origin').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#origin').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#warranty').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#warranty').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#upload').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#upload').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#btn_file_upload').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
+
+        $('#btn_file_upload').keypress(function (event) {
+            if (event.keyCode == 13 || event.which == 13) {
+                $('#btn_add').focus();
+                event.preventDefault(); //preventDefault() Không load lại form
+            }
+        });
     </script>
 
 
@@ -324,6 +505,123 @@
 
             });
         });
+
+    </script>
+
+    <script type="text/javascript" src="/web_noi_that1/public/template/admin/Inputmask/dist/jquery.inputmask.js"></script>
+    <script type="text/javascript" src="/web_noi_that1/public/template/admin/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var price_input = document.getElementById("price_input");
+            Inputmask({
+                // prefix: "VNĐ ",
+                thousandsSeparator: ',000 ',
+                alias: "currency",
+                digits: 0,
+                digitsOptional: false,
+                clearMaskOnLostFocus: false,
+                rightAlign: false,
+                unmaskAsNumber: true,
+                'oncomplete': function () {
+                    document.getElementById('price').value = document.getElementById('price_input').value.replace(',','');
+                    if(document.getElementById('price_input').value !== document.getElementById('price').value){
+                        var str =  document.getElementById('price_input').value;
+                        document.getElementById('price').value = str.split(',').join('');
+                    }
+                    if(sessionStorage.getItem('price_input')){
+                        sessionStorage.setItem('price_input',document.getElementById('price_input').value);
+                    }
+                }
+            }).mask(price_input);
+
+            var price_input_sale = document.getElementById("price_input_sale");
+            Inputmask({
+                // prefix: "VNĐ ",
+                alias: "currency",
+                digits: 0,
+                digitsOptional: false,
+                clearMaskOnLostFocus: false,
+                rightAlign: false,
+                unmaskAsNumber: true,
+                'oncomplete': function () {
+                    if(document.getElementById('price_input_sale').value !== document.getElementById('price_sale').value){
+                        var str =  document.getElementById('price_input_sale').value;
+                        document.getElementById('price_sale').value = str.split(',').join('');
+                    }
+                    if(sessionStorage.getItem('price_input_sale')){
+                        sessionStorage.setItem('price_input_sale',document.getElementById('price_input_sale').value);
+                    }
+                }
+            }).mask(price_input_sale);
+
+            if(sessionStorage.getItem('price_input_sale')){
+                var str =  document.getElementById('price_input_sale').value;
+                document.getElementById('price_sale').value = str.split(',').join('');
+            }
+
+            if(sessionStorage.getItem('price_input')){
+                var str =  document.getElementById('price_input').value;
+                document.getElementById('price').value = str.split(',').join('');
+            }
+
+        });
+
+        document.querySelector('#menu_id').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('menu_id')){
+                sessionStorage.setItem('menu_id',document.getElementById('menu_id').value);
+            }
+        })
+
+        document.querySelector('#price_input').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('price_input')){
+                sessionStorage.setItem('price_input',document.getElementById('price_input').value);
+            }
+        })
+
+        document.querySelector('#price_input_sale').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('price_input_sale')){
+                sessionStorage.setItem('price_input_sale',document.getElementById('price_input_sale').value);
+            }
+        })
+
+        document.querySelector('#material').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('material')){
+                sessionStorage.setItem('material',document.getElementById('material').value);
+            }
+        })
+
+        document.querySelector('#color').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('color')){
+                sessionStorage.setItem('color',document.getElementById('color').value);
+            }
+        })
+
+        document.querySelector('#style').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('style')){
+                sessionStorage.setItem('style',document.getElementById('style').value);
+            }
+        })
+
+        document.querySelector('#size').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('size')){
+                sessionStorage.setItem('size',document.getElementById('size').value);
+            }
+        })
+
+        document.querySelector('#origin').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('origin')){
+                sessionStorage.setItem('origin',document.getElementById('origin').value);
+            }
+        })
+
+        document.querySelector('#warranty').addEventListener('change', (event) => {
+            if(sessionStorage.getItem('warranty')){
+                sessionStorage.setItem('warranty',document.getElementById('warranty').value);
+            }
+        })
 
     </script>
 

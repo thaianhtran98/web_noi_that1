@@ -20,14 +20,16 @@ class ProductAdminService
 
     protected function isValidPrice($request)
     {
-        if ($request->input('price') != 0 && $request->input('price_sale') != 0
-            && $request->input('price_sale') >= $request->input('price')
+        $price = (integer)str_replace(',','',$request->input('price'));
+        $price_sale = (integer)str_replace(',','',$request->input('price_sale'));
+        if ($price != 0 && $price_sale != 0
+            && $price_sale >= $price
         ) {
             Session::flash('error', 'Giá giảm phải nhỏ hơn giá gốc');
             return false;
         }
 
-        if ($request->input('price_sale') != 0 && (int)$request->input('price') == 0) {
+        if ($price_sale != 0 && $price== 0) {
             Session::flash('error', 'Vui lòng nhập giá gốc');
             return false;
         }
@@ -111,6 +113,7 @@ class ProductAdminService
             Storage::delete($path);
             $path_detail =  'public/uploads_detail/' . $product->name;
             Storage::deleteDirectory($path_detail);
+            products_detail::where('id_sp',$product->id)->delete();
             $product->delete();
             return true;
         }

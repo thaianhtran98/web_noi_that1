@@ -9,7 +9,7 @@
             <th>Danh Mục</th>
             <th>Giá Gốc</th>
             <th>Giá Khuyến Mãi</th>
-            <th>Active</th>
+            <th>Tình Trạng</th>
             <th>Update</th>
             <th style="width: 100px">&nbsp;</th>
         </tr>
@@ -18,13 +18,15 @@
             @foreach($products as $key => $product)
             <tr>
                 <td>{{ $product->id }}</td>
-                <td>{{ $product->name }}</td>
-                <td>{{ $product->menu->name }}</td>
-                <td>{{ $product->price }}</td>
-                <td>{{ $product->price_sale }}</td>
-                <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>
-                <td>{{ $product->updated_at }}</td>
                 <td>
+                    <img src="{{ $product->thumb }}" width="60px" height="60px" alt="IMG">
+                    {{ $product->name }}</td>
+                <td style="line-height: 60px">{{ $product->menu->name }}</td>
+                <td style="line-height: 60px">{{ number_format($product->price) }}</td>
+                <td style="line-height: 60px">{{ number_format($product->price_sale) }}</td>
+                <td style="line-height: 60px">{!! \App\Helpers\Helper::active($product->active) !!}</td>
+                <td style="line-height: 60px">{{ $product->updated_at }}</td>
+                <td style="line-height: 60px">
                     <a class="btn btn-primary btn-sm" href="{{route('edit_sp',$product->id)}}">
                         <i class="fas fa-edit"></i>
                     </a>

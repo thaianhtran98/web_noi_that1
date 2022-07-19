@@ -13,6 +13,12 @@
                 <input type="text" name="name" value="{{ $menu->name }}" class="form-control"  placeholder="Nhập tên danh mục">
             </div>
 
+
+            <div class="form-group">
+                <label for="menu">Thứ tự sắp xếp</label>
+                <input type="number" name="sort" id="sort" value="{{ $menu->sort != null ? $menu->sort : 0 }}" class="form-control"  placeholder="Nhập thứ tự sắp xếp">
+            </div>
+
             <div class="form-group">
                 <label>Danh Mục</label>
                 <select class="form-control" name="parent_id">
@@ -63,5 +69,7 @@
 @section('footer')
     <script>
         CKEDITOR.replace('content');
+
+
     </script>
 @endsection

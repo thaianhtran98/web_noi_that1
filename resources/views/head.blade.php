@@ -2,7 +2,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="/web_noi_that1/public/template/admin/dist/img/09a1b65a422c8172d83d.jpg"/>
+<link rel="icon" type="image/png" href="/web_noi_that1/public/template/admin/dist/img/gold.jpg"/>
 <!--=====================================/==========================================================-->
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -29,7 +29,11 @@
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/vendor/perfect-scrollbar/perfect-scrollbar.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/util.css">
+
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/main.css">
+<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.theme.default.min.css">
+
 <!--===============================================================================================-->
 {{--<link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/style.css">--}}
 
