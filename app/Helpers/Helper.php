@@ -52,7 +52,7 @@ class Helper
             if ($menu->parent_id == $parent_id) {
                 if ($menu->parent_id == 0){
                     $html .= '
-                    <li>
+                    <li  style="border-left: 1px solid #fffffc;padding-left: 25px;line-height: 40px;">
                         <a href="'. route('index_danhmuc',[$menu->id,Str::slug($menu->name, "-")]).' ">
                             ' . $menu->name . '
                         </a>';

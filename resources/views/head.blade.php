@@ -31,8 +31,8 @@
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/util.css">
 
 <link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/main.css">
-<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.theme.default.min.css">
+{{--<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.carousel.min.css">--}}
+{{--<link rel="stylesheet" href="/web_noi_that1/public/template/owlcarousel/assets/owl.theme.default.min.css">--}}
 
 <!--===============================================================================================-->
 {{--<link rel="stylesheet" type="text/css" href="/web_noi_that1/public/template/css/style.css">--}}
@@ -44,4 +44,9 @@
     body{
         font-family: Roboto, Sans-Serif;
     }
+
+    .bg10 {background-color: #575757;}
+
 </style>
+
+@yield('head')

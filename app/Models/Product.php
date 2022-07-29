@@ -18,6 +18,7 @@ class Product extends Model
         'active',
         'thumb',
         'view',
+        'id_sp',
         'color',
         'size',
         'material',

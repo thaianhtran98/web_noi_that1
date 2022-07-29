@@ -39,13 +39,11 @@ class ProductAdminService
 
     public function insert($request)
     {
-//        dd($request->input('img_detail'));
         $isValidPrice = $this->isValidPrice($request);
         if ($isValidPrice === false) return false;
 
         try {
             $request->except('_token');
-//            dd($request->input('img_detail'));
             Product::create($request->all());
 
             $product = Product::orderByDesc('id')->first();
@@ -124,4 +122,10 @@ class ProductAdminService
     public function get_img_detail($id){
         return products_detail::where('id_sp',$id)->get();
     }
+
+    public function get_id(){
+        return Product::orderByDesc('id')->first();
+    }
+
+
 }

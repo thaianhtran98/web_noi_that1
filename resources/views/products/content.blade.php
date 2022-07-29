@@ -169,19 +169,13 @@
 
         </div>
 
-        <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-
-            <span class="stext-107 cl6 p-lr-25">
-				Loại: {{ $product->menu->name }}
-			</span>
-        </div>
     </section>
 
     <div class="product-footer">
         <div class="woocommerce-tabs wc-tabs-wrapper container tabbed-content">
             <ul class="tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-tabs nav-normal nav-left" role="tablist">
-                <li class="description_tab " style="font-family: Roboto, Sans-Serif; font-size: 36px;color: #717fe0" id="tab-title-description" role="tab" aria-controls="tab-description">
-                    <a >Mô tả sản phẩm </a>
+                <li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
+                    <strong> <a style="font-family:  Roboto, Sans-Serif;color: #717fe0" class="stext-301"> Mô tả </a></strong>
                 </li>
             </ul>
             <div class="tab-panels">
@@ -190,19 +184,17 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">
-            <hr>
-
             <div class="p-b-10">
-                <h3 style="font-family:  Roboto, Sans-Serif;color: #717fe0" class="ltext-106 cl5">
-                    Các sản phẩm tương tự
-                </h3>
+                <ul class="tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-tabs nav-normal nav-left" role="tablist">
+                    <li class="description_tab" id="tab-title-description" role="tab" aria-controls="tab-description">
+                        <strong> <a style="font-family:  Roboto, Sans-Serif;color: #717fe0" class="stext-301">  Sản phẩm tương tự </a></strong>
+                    </li>
+                </ul>
             </div>
-            <hr>
 
             @include('products.list')
         </div>

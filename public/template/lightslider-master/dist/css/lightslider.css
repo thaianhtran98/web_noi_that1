@@ -171,6 +171,7 @@
 }
 .lSAction > .lSPrev {
     background-position: 0 0;
+    /*background-image: url('../img/prev.png');*/
     left: 10px;
 }
 .lSAction > .lSNext {

@@ -359,13 +359,6 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   align-items: center;
 }
 
-.main-menu > li {
-  display: block;
-  position: relative;
-  padding: 20px 10px 20px 0px;
-  margin: 0px 4px 0px 14px;
-}
-
 .main-menu > li > a {
   font-family: Roboto, Sans-Serif;
   font-size: 18px;

@@ -3,14 +3,23 @@
 @section('content')
     <div class="bg0 m-t-23 p-b-140 p-t-80">
         <div class="container">
-            <div class="flex-w flex-sb-m p-b-52">
-                <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+
+        </div>
+
+        <div class="container">
+            <div class="flex-w flex-sb-m p-b-52" style="background-color: rgba(87,87,87,0.11); height: 40px;line-height: 52px; margin-bottom: 20px">
+                <div class="flex-w flex-l-m filter-tope-group m-tb-10" >
 {{--                   <h1>{{ $title }}</h1>--}}
                     <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                        @if(count($menu_child)!=0)
                         <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                            Tất cả các sản phẩm của danh mục {{ $title }}
+                            Các sản phẩm của danh mục {{ $title }}
                         </button>
-
+                        @else
+                            <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                              Các sản phẩm của danh mục {{ $title }}
+                            </button>
+                        @endif
 
                         @if(count($menu_child)!=0)
                             @foreach($menu_child as $child)
@@ -46,7 +55,7 @@
                 <div class="dis-none panel-filter w-full p-t-10">
                     <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                         <div class="filter-col1 p-r-15 p-b-27">
-                            <div class="mtext-102 cl2 p-b-15">
+                            <div class="mtext-102 cl2 p-b-15" style="font-family: Roboto, Sans-Serif;">
                                 Sắp xếp
                             </div>
 

@@ -45,4 +45,10 @@ class ProductService
         return products_detail::where('id_sp',$id)->get();
     }
 
+    public function view_plus($id){
+        $product = Product::where('id',$id)->first();
+        $product->view += 1;
+        return $product->save();
+    }
+
 }

@@ -38,9 +38,8 @@ class UploadService
             try {
                 $name = $request->file('file')->getClientOriginalName();
 
-//                $request->input('name_sp'));
 
-                $pathFull = 'uploads_detail/' . $request->input('name_sp') ;
+                $pathFull = 'uploads_detail/' . $request->input('id_sp') ;
 
                 $request->file('file')->storeAs(
                     '/public/' . $pathFull, $name

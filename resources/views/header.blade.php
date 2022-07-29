@@ -6,7 +6,14 @@
 
     <!-- Header desktop -->
     <style>
-            .main-menu > li > a {
+        .main-menu > li {
+            display: block;
+            position: relative;
+            /*padding: 20px 10px 20px 0px;*/
+            margin: 0px 4px 0px 14px;
+        }
+
+        .main-menu > li > a {
                 font-family: Roboto, Sans-Serif;
                 font-size: 18px;
                 color: #fffffc;
@@ -15,6 +22,7 @@
                 -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
                 -moz-transition: all 0.4s;
+                text-transform: uppercase;
             }
 
             .header-v3 .main-menu > li > a {
@@ -32,8 +40,7 @@
                 -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
                 -moz-transition: all 0.4s;
-                padding: 5px 0;
-
+                /*padding: 5px 0;*/
                 box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
                 -moz-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
                 -webkit-box-shadow: 0 1px 5px 0px rgba(0,0,0,0.2);
@@ -70,6 +77,7 @@
                 transition: all 0.4s;
                 -webkit-transition: all 0.4s;
                 -o-transition: all 0.4s;
+                text-transform: uppercase;
                 -moz-transition: all 0.4s;
             }
 
@@ -79,7 +87,7 @@
                 z-index: 1100;
                 background-color: #fffffc;
                 width: 100%;
-                height: 80px;
+                height: 60px;
                 top: 0px;
                 left: 0px;
                 -webkit-transition: height 0.3s, background-color 0.3s;
@@ -104,6 +112,7 @@
                 -webkit-text-fill-color: transparent;
             }
         </style>
+
     <div class="container-menu-desktop trans-03"  >
         <div class="wrap-menu-desktop">
             <nav class="limiter-menu-desktop p-l-45" style="background-color: #575757">
@@ -116,12 +125,18 @@
                     <ul class="main-menu">
                         <li class=""><a href="{{route('home')}}">Trang Chủ</a> </li>
                         {!!$menusHtml!!}
+                        <li style="border-left: 1px solid #fffffc;padding-left: 25px;line-height: 40px; color: #fffffc">
+                            <a>
+                                Giới thiệu
+                            </a>
+                        </li>
+                        <li style="border-left: 1px solid #fffffc;padding-left: 25px;line-height: 40px;color: #fffffc">
+                            <a>
+                                Liên hệ
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <!-- Icon header -->
-{{--               z--}}
-
-                <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m h-full">
                     <div class="flex-c-m h-full p-r-24">
                         <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
@@ -135,8 +150,6 @@
                             <i style="color: #fffffc" class="zmdi zmdi-shopping-cart"></i>
                         </div>
                     </div>
-
-
                 </div>
 
             </nav>
@@ -170,12 +183,23 @@
 				</span>
         </div>
     </div>
+
+
     <!-- Menu Mobile -->
     <div class="menu-mobile">
         <ul class="main-menu-m">
             <li><a href="{{route('home')}}">Trang Chủ</a> </li>
+
             <li>
-                <a href="contact.html">Liên Hệ</a>
+                <a>
+                    Giới thiệu
+                </a>
+            </li>
+
+            <li>
+                <a>
+                    Liên hệ
+                </a>
             </li>
 
             {!!  $menusHtml2 !!}

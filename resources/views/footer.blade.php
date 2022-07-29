@@ -1,147 +1,73 @@
 
 <!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-{{--    <div class="container">--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-sm-6 col-lg-3 p-b-50">--}}
-{{--                <h4 class="stext-301 cl0 p-b-30">--}}
-{{--                    Categories--}}
-{{--                </h4>--}}
+<footer class="bg10 p-t-75 p-b-32">
+    <div class="container">
+        <div class="row">
 
-{{--                <ul>--}}
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Women--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                <img height="100"
+                     src="/web_noi_that1/public/template/admin/dist/img/277528884_305346451684807_4696188226227418095_n.jpg" >
+                <h4 class="stext-301 cl0 p-t-5 p-b-5">
+                    CÁC DANH MỤC
+                </h4>
+                <ul>
+                    @foreach($menus as $menu)
+                        @if($menu->parent_id == 0)
+                    <li class=" p-b-10">
+                        <a href="{{route('index_danhmuc',[$menu->id,\Illuminate\Support\Str::slug($menu->name, "-")])}}" class="stext-107 cl7 hov-cl1 trans-04">
+                            {{$menu->name}}
+                        </a>
+                    </li>
+                        @endif
+                    @endforeach
+                </ul>
+            </div>
 
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Men--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    Hỗ trợ khách hàng
+                </h4>
 
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Shoes--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                <ul>
+                    <li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">Hotline: 0907 466 879</li>
+                    <li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">Email: tranthuong5885@gmail.com</li>
+                    <li class="p-b-10 stext-107 cl7 hov-cl1 trans-04">Địa chỉ: Quận Ninh Kiều, TP Cần Thơ</li>
+                </ul>
 
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Watches--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
+            </div>
 
-{{--            <div class="col-sm-6 col-lg-3 p-b-50">--}}
-{{--                <h4 class="stext-301 cl0 p-b-30">--}}
-{{--                    Help--}}
-{{--                </h4>--}}
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <h4 class="stext-301 cl0 p-b-30">
+                    Bản đồ
+                </h4>
 
-{{--                <ul>--}}
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Track Order--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.91063304488!2d105.76630731525776!3d10.024233275365813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0883aef5aaaad%3A0xdbb86a7e6f1429f!2sBilliards%20Club%20Th%E1%BB%8Bnh%20Ph%C3%A1t!5e0!3m2!1svi!2s!4v1659081109136!5m2!1svi!2s"
+                            width="255" height="300" style="border:0;"
+                            allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
 
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Returns--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            Shipping--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
-{{--                    <li class="p-b-10">--}}
-{{--                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">--}}
-{{--                            FAQs--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-
-{{--            <div class="col-sm-6 col-lg-3 p-b-50">--}}
-{{--                <h4 class="stext-301 cl0 p-b-30">--}}
-{{--                    GET IN TOUCH--}}
-{{--                </h4>--}}
-
-{{--                <p class="stext-107 cl7 size-201">--}}
-{{--                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879--}}
-{{--                </p>--}}
-
-{{--                <div class="p-t-27">--}}
-{{--                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">--}}
-{{--                        <i class="fa fa-facebook"></i>--}}
-{{--                    </a>--}}
-
-{{--                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">--}}
-{{--                        <i class="fa fa-instagram"></i>--}}
-{{--                    </a>--}}
-
-{{--                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">--}}
-{{--                        <i class="fa fa-pinterest-p"></i>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <div class="col-sm-6 col-lg-3 p-b-50">--}}
-{{--                <h4 class="stext-301 cl0 p-b-30">--}}
-{{--                    Newsletter--}}
-{{--                </h4>--}}
-
-{{--                <form>--}}
-{{--                    <div class="wrap-input1 w-full p-b-4">--}}
-{{--                        <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">--}}
-{{--                        <div class="focus-input1 trans-04"></div>--}}
-{{--                    </div>--}}
-
-{{--                    <div class="p-t-18">--}}
-{{--                        <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">--}}
-{{--                            Subscribe--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-{{--        <div class="p-t-40">--}}
-{{--            <div class="flex-c-m flex-w p-b-18">--}}
-{{--                <a href="#" class="m-all-1">--}}
-{{--                    <img src="/web_noi_that1/public/template/images/icons/icon-pay-01.png" alt="ICON-PAY">--}}
-{{--                </a>--}}
-
-{{--                <a href="#" class="m-all-1">--}}
-{{--                    <img src="/web_noi_that1/public/template/images/icons/icon-pay-02.png" alt="ICON-PAY">--}}
-{{--                </a>--}}
-
-{{--                <a href="#" class="m-all-1">--}}
-{{--                    <img src="/web_noi_that1/public/template/images/icons/icon-pay-03.png" alt="ICON-PAY">--}}
-{{--                </a>--}}
-
-{{--                <a href="#" class="m-all-1">--}}
-{{--                    <img src="/web_noi_that1/public/template/images/icons/icon-pay-04.png" alt="ICON-PAY">--}}
-{{--                </a>--}}
-
-{{--                <a href="#" class="m-all-1">--}}
-{{--                    <img src="/web_noi_that1/public/template/images/icons/icon-pay-05.png" alt="ICON-PAY">--}}
-{{--                </a>--}}
-{{--            </div>--}}
-
-{{--            <p class="stext-107 cl6 txt-center">--}}
-{{--                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--}}
-{{--                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> &amp; distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a>--}}
-{{--                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->--}}
-
-{{--            </p>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+            <div class="col-sm-6 col-lg-3 p-b-50">
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="3DoZRTIj"></script>
+                <h4 class="stext-301 cl0 p-b-30">
+                    Fanpage
+                </h4>
+                <div class="fb-page" data-href="https://www.facebook.com/N%E1%BB%98I-TH%E1%BA%A4T-PH%C3%9AC-TH%E1%BB%8ANH-109158808390146/?ref=page_internal"
+                     data-tabs="timeline" data-width="500" data-height="300" data-small-header="false"
+                     data-adapt-container-width="true"
+                     data-hide-cover="false"
+                     data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/N%E1%BB%98I-TH%E1%BA%A4T-PH%C3%9AC-TH%E1%BB%8ANH-109158808390146/?ref=page_internal" class="fb-xfbml-parse-ignore">
+                        <a href="https://www.facebook.com/N%E1%BB%98I-TH%E1%BA%A4T-PH%C3%9AC-TH%E1%BB%8ANH-109158808390146/?ref=page_internal">NỘI THẤT PHÚC THỊNH</a>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 
 
@@ -270,6 +196,6 @@
 <!--===============================================================================================-->
 <script src="/web_noi_that1/public/template/js/main.js"></script>
 {{--<script src="/web_noi_that1/public/template/js/public.js"></script>--}}
-<script src="/web_noi_that1/public/template/owlcarousel/owl.carousel.min.js"></script>
+{{--<script src="/web_noi_that1/public/template/owlcarousel/owl.carousel.min.js"></script>--}}
 
 @yield('footer')

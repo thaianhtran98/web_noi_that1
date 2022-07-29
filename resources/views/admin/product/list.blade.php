@@ -4,7 +4,7 @@
     <table id="table_sp" class="table ">
         <thead>
         <tr>
-            <th style="width: 50px">ID</th>
+            <th style="width: 100px">MÃ SP</th>
             <th>Tên Sản Phẩm</th>
             <th>Danh Mục</th>
             <th>Giá Gốc</th>
@@ -17,7 +17,7 @@
         <tbody>
             @foreach($products as $key => $product)
             <tr>
-                <td>{{ $product->id }}</td>
+                <td>{{ $product->id_sp }}</td>
                 <td>
                     <img src="{{ $product->thumb }}" width="60px" height="60px" alt="IMG">
                     {{ $product->name }}</td>
@@ -85,14 +85,14 @@
                     searchPanes: {
                         show: true
                     },
-                    targets: [ 2,3,4]
+                    targets: [ 2,3,4 ,5]
                 },
-                // {
-                //     searchPanes: {
-                //         show: false
-                //     },
-                //     targets: [ 7]
-                // },
+                {
+                    searchPanes: {
+                        show: false
+                    },
+                    targets: [ 1]
+                },
             ],
             searchPanes: {
                 cascadePanes: true,

@@ -42,12 +42,17 @@
     <form action="" method="POST">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group">
                         <label for="menu">Tên Sản Phẩm</label>
                         <input type="text" name="name"  id="name" value="{{ $product->name }}" class="form-control"
                                placeholder="Nhập tên sản phẩm">
                     </div>
+                </div>
+
+                <div class="col-md-1">
+                    <label for="menu">Mã Sản Phẩm</label>
+                    <input  type="text" name="id_sp" id="id_sp" disabled class="form-control"   />
                 </div>
 
                 <div class="col-md-6">

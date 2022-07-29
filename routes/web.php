@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\SliderController;
 
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store'])->name('login_store');
-Route::get('admin/users/logout',[LoginController::class,'logout']);
+Route::get('admin/users/logout',[LoginController::class,'logout'])->name('logout');
 
 
 Route::middleware(['auth'])->group(function () {

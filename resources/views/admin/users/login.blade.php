@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
     @include('admin.head')
+    <img STYLE="top: 0; left: 20px"  height="100px"  src="/web_noi_that1/public/template/admin/dist/img/gold.jpg"/>
+
 </head>
 <body class="hold-transition login-page">
+
         <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Admin</b></a>
+            <a href="#"><b>QUẢN TRỊ VIÊN</b></a><br>
+
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+{{--                <p class="login-box-msg">Sign in to start your session</p>--}}
                 @include('admin.alert')
                 <form action="{{route('login_store')}}" method="post">
                     <div class="input-group mb-3">

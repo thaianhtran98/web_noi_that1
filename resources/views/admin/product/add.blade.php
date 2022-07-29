@@ -46,12 +46,14 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <label for="menu">Tên Sản Phẩm</label>
-                        <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control"  placeholder="Nhập tên sản phẩm">
+                        <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control" placeholder="Nhập tên sản phẩm">
                     </div>
                 </div>
 
                 <div class="col-md-1">
-
+                    <label for="menu">Mã Sản Phẩm</label>
+                    <input  type="text" name="id_sp_input" id="id_sp_input" disabled class="form-control"/>
+                    <input  type="text" name="id_sp" id="id_sp" style="display: none" class="form-control"/>
                 </div>
 
                 <div class="col-md-5">
@@ -78,7 +80,7 @@
                     <div class="form-group">
                         <label for="menu">Giá Gốc</label>
                         <input type="text" name="price_input" id="price_input" value="{{ old('price_input') }}" placeholder="Nhập giá gốc" class="form-control" >
-                        <input type="number" name="price" hidden id="price" value="{{ old('price_input_sale') }}" placeholder="Nhập giá giảm" class="form-control" >
+                        <input type="number" name="price" hidden id="price" value="{{ old('price_input') }}" placeholder="Nhập giá giảm" class="form-control" >
                     </div>
                 </div>
 
@@ -453,12 +455,15 @@
                 const form = new FormData();
                 form.append('file', event.target.files[0]);
 
-                let name_sp = document.getElementById('name').value;
-                if (name_sp === ''){
+                let id_sp_input = document.getElementById('id_sp_input').value;
+                if (document.getElementById('name').value === ''){
                     alert('Vui lòng nhập tên sản phẩm');
                     return false;
+                } else if( document.getElementById('upload').value === ''){
+                    alert('Vui lòng upload ảnh chinh');
+                    return false;
                 }else {
-                    form.append('name_sp',name_sp)
+                    form.append('id_sp_input',id_sp_input)
                 }
 
                 $.ajax({
@@ -526,7 +531,6 @@
                 rightAlign: false,
                 unmaskAsNumber: true,
                 'oncomplete': function () {
-                    document.getElementById('price').value = document.getElementById('price_input').value.replace(',','');
                     if(document.getElementById('price_input').value !== document.getElementById('price').value){
                         var str =  document.getElementById('price_input').value;
                         document.getElementById('price').value = str.split(',').join('');
@@ -567,9 +571,39 @@
                 document.getElementById('price').value = str.split(',').join('');
             }
 
+            var arr= document.getElementById('menu_id').options[document.getElementById('menu_id').selectedIndex].text.split(' ');
+            var id_sp_input = '';
+            var n=2;
+            if (arr.length > n)
+                n=3
+            for (var i = 0 ; i<n ; i++){
+                id_sp_input += arr[i][0].toUpperCase();
+            }
+            @if($id_sp!=null)
+                document.getElementById('id_sp_input').value = id_sp_input+{{$id_sp->id}};
+                document.getElementById('id_sp').value = id_sp_input+{{$id_sp->id}};
+            @else
+                document.getElementById('id_sp_input').value = id_sp_input+'0';
+                document.getElementById('id_sp').value = id_sp_input+'0';
+            @endif
         });
 
         document.querySelector('#menu_id').addEventListener('change', (event) => {
+            var arr= document.getElementById('menu_id').options[document.getElementById('menu_id').selectedIndex].text.split(' ');
+            var id_sp_input = '';
+            var n=2;
+            if (arr.length > n)
+                n=3
+            for (var i = 0 ; i<n ; i++){
+                id_sp_input += arr[i][0].toUpperCase();
+            }
+            @if($id_sp!=null)
+                document.getElementById('id_sp_input').value = id_sp_input+{{$id_sp->id}};
+                document.getElementById('id_sp').value = id_sp_input+{{$id_sp->id}};
+            @else
+                document.getElementById('id_sp_input').value = id_sp_input+'0';
+                document.getElementById('id_sp').value = id_sp_input+'0';
+            @endif
             if(sessionStorage.getItem('menu_id')){
                 sessionStorage.setItem('menu_id',document.getElementById('menu_id').value);
             }
