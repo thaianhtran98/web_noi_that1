@@ -4,7 +4,7 @@
     <table class="table">
         <thead>
         <tr>
-            <th style="width: 50px">ID</th>
+            <th style="width: 50px">STT</th>
             <th>Tiêu Đề</th>
             <th>Link</th>
             <th>Ảnh</th>
@@ -16,7 +16,7 @@
         <tbody>
         @foreach($sliders as $key => $slider)
             <tr>
-                <td>{{ $slider->id }}</td>
+                <td>{{ $slider->sort_by }}</td>
                 <td>{{ $slider->name }}</td>
                 <td>{{ $slider->url }}</td>
                 <td><a href="{{ $slider->thumb }}" target="_blank">

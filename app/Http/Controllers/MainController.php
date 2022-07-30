@@ -27,7 +27,8 @@ class MainController extends Controller
             'title' => 'Nội Thất Phúc Thịnh',
             'sliders' => $this->slider->show(),
             'menus' => $this->menu->show(),
-            'products' => $this->product->get()
+            'products' => $this->product->get(),
+            'new_products' => $this->product->get_product_new()
         ]);
     }
 

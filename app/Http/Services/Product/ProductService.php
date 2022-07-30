@@ -51,4 +51,8 @@ class ProductService
         return $product->save();
     }
 
+    public function get_product_new(){
+        return Product::where('active',1)->orderByDesc('id')->paginate(20);
+    }
+
 }

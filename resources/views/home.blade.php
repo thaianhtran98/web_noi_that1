@@ -208,12 +208,12 @@
         @media (max-width: 2900px) {
             .block2 {
                 width: auto;
-                height: 450px;
+                height: 400px;
             }
 
             .item_sp {
                 width: auto;
-                height: 450px
+                height: 400px
             }
 
             .img_sp {
@@ -229,12 +229,12 @@
         @media (max-width: 912px) {
             .block2 {
                 width: auto;
-                height: 350px;
+                height: 300px;
             }
 
             .item_sp {
                 width: auto;
-                height: 350px
+                height: 300px
             }
 
             .img_sp {
@@ -247,14 +247,29 @@
             }
         }
     </style>
+
+    <style>
+
+        @media (max-width: 2900px) {
+          #imageGallery > li {
+              height: calc(100%);
+          }
+        }
+
+        @media (max-width: 912px) {
+            #imageGallery > li {
+                height: calc(100%);
+            }
+        }
+    </style>
 @endsection
 @section('content')
-    <div class="container"  style="margin-bottom: 50px">
-        <ul id="imageGallery" style="text-align: center;width: 500px;">
+    <div class="container"  style="margin-bottom: 50px ;margin-top: -24px">
+        <ul id="imageGallery" style="text-align: center; height: auto">
             @foreach($sliders as $slide)
             <li data-thumb="{{$slide->thumb}}" data-src="{{$slide->thumb}}">
                 <a href="{{$slide->url}}">
-                    <img width="90%" src="{{$slide->thumb}}" />
+                    <img width="95%" height="95%" src="{{$slide->thumb}}" />
                 </a>
             </li>
             @endforeach
@@ -263,101 +278,125 @@
 
 
     <section id="home-service">
-        <div class="home-service-inner">
-            <div class="wrapper">
-                <div class="inner">
-                    <div class="grid mg-left-0 medium--hide small--hide">
-                        <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
-                            <div class="grid__item xxx-xl">
-                                <div class="service-icon">
-                                    <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_1.png?v=942" alt="<b>Bảo Hành Sản Phẩm</b>">
-                                </div>
-                            </div>
-                            <div class="grid__item xxx-xl">
-                                <div class="service-title">
-                                    <b>Bảo Hành Sản Phẩm</b>
-                                </div>
-                                <div class="service-desc">
-                                    Tất cả sản phẩm được bảo hành trên 6 tháng về lỗi KỸ THUẬT
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
-                            <div class="grid__item xxx-xl">
-                                <div class="service-icon">
-                                    <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_2.png?v=942" alt="<b>100% Chất Liệu Chính Hãng<br> An toàn sức khỏe</b>">
-                                </div>
-                            </div>
-                            <div class="grid__item xxx-xl">
-                                <div class="service-title">
-                                    <b>100% Chất Liệu Chính Hãng<br> An toàn sức khỏe</b>
-                                </div>
-                                <div class="service-desc">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
-                            <div class="grid__item xxx-xl">
-                                <div class="service-icon">
-                                    <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_3.png?v=942" alt="<b>Máy Đo Sản Phẩm</b>">
-                                </div>
-                            </div>
-                            <div class="grid__item xxx-xl">
-                                <div class="service-title">
-                                    <b>Máy Đo Sản Phẩm</b>
-                                </div>
-                                <div class="service-desc">
-                                    Theo kích thước và màu sắc ưu thích của khách hàng
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
-                            <div class="grid__item xxx-xl">
-                                <div class="service-icon">
-                                    <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_4.png?v=942" alt="<b>Tư Vấn 24/7</b>">
-                                </div>
-                            </div>
-
-                            <div class="grid__item xxx-xl">
-                                <div class="service-title">
-                                    <b>Tư Vấn 24/7</b>
-                                </div>
-                                <div class="service-desc">
-                                    Hotline &amp; Zalo Từ 9h - 21h<br><a href="tel:0907466879">0907 466 879</a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
-                            <div class="grid__item xxx-xl">
-                                <div class="service-icon" style="background: #f4f4f5;
+        <div class="container">
+            <div class="home-service-inner">
+                <div class="wrapper">
+                    <div class="inner">
+                        <div class="grid mg-left-0 medium--hide small--hide">
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon" style="background: #f4f4f5;
                                           /*border: 0.1875em solid #0F1C3F;*/
                                           border-radius: 50%;
                                           height: 52px;
                                           width: 52px;margin-left: auto;margin-right: auto">
-                                    <i style="color: #1d88fe; font-size: 30px;margin-top: 10px;" class="fa fa-truck" aria-hidden="true"></i>
+                                        <i style="color: #1d88fe; font-size: 30px;margin-top: 10px;" class="fa fa-truck" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Miễn phí giao hàng</b>
+                                    </div>
+                                    <div class="service-desc">
+                                        Bán kính 10km
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="grid__item xxx-xl">
-                                <div class="service-title">
-                                    <b>Miễn phí giao hàng</b>
+
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon" style="background: #f4f4f5;
+                                          /*border: 0.1875em solid #0F1C3F;*/
+                                          border-radius: 50%;
+                                          height: 52px;
+                                          width: 52px;margin-left: auto;margin-right: auto">
+                                        <i style="color: #1d88fe; font-size: 30px;margin-top: 10px;" class="fa fa-usd" aria-hidden="true"></i>
+                                    </div>
                                 </div>
-                                <div class="service-desc">
-                                    Bán kính 10km
+
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Tiết Kiệm Chi Phí</b>
+                                    </div>
+                                    <div class="service-desc">
+                                        Miễn phí lắp đặt và thiết kế
+                                    </div>
                                 </div>
                             </div>
+
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon">
+                                        <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_1.png?v=942" alt="<b>Bảo Hành Sản Phẩm</b>">
+                                    </div>
+                                </div>
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Bảo Hành Sản Phẩm</b>
+                                    </div>
+                                    <div class="service-desc">
+                                        Tất cả sản phẩm được bảo hành trên 6 tháng về lỗi KỸ THUẬT
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon">
+                                        <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_2.png?v=942" alt="<b>100% Chất Liệu Chính Hãng<br> An toàn sức khỏe</b>">
+                                    </div>
+                                </div>
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Chất Liệu Chính Hãng <br> An toàn sức khỏe</b>
+                                    </div>
+                                    <div class="service-desc">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon">
+                                        <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_3.png?v=942" alt="<b>Máy Đo Sản Phẩm</b>">
+                                    </div>
+                                </div>
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Thiết Kế Sản Phẩm</b>
+                                    </div>
+                                    <div class="service-desc">
+                                        Theo kích thước và màu sắc ưu thích của khách hàng
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid__item xxx-xl large--one-third medium--one-third small--one-whole service-item pd-left-0">
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-icon">
+                                        <img src="//theme.hstatic.net/1000240719/1000698562/14/service_icon_4.png?v=942" alt="<b>Tư Vấn 24/7</b>">
+                                    </div>
+                                </div>
+
+                                <div class="grid__item xxx-xl">
+                                    <div class="service-title">
+                                        <b>Tư Vấn</b>
+                                    </div>
+                                    <div class="service-desc">
+                                        Hotline &amp; Zalo Từ 9h - 21h<br><a href="tel:0907466879">0907 466 879</a>
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
-
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -367,6 +406,42 @@
     <!-- Product -->
     <section class="bg0 p-t-23 p-b-140">
         <div class="container">
+            <div class="flex-w flex-sb-m p-b-52">
+                <div class="container section-title-container title-slash title-has-child" style="margin-top: 0px; margin-bottom: 10px;margin-left: -15px">
+                    <h3 class="section-title section-title-normal"><span class="section-title-main" style="color: #ffffff;">
+                            <a>Sản Phẩm Mới</a></span>
+                    </h3>
+                </div>
+
+                <ul id="product_new" class="cs-hidden">
+                    @foreach($new_products as $product)
+                    <li class="item_sp" >
+                        <div class="block2">
+                            <div class="block2-pic hov-img0 block_width">
+                                <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}">
+                                    <img class="img_sp" src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                                </a>
+                            </div>
+
+                            <div class="block2-txt flex-w flex-t p-t-14">
+                                <div class="block2-txt-child1 flex-col-l ">
+                                    <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}"
+                                       class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        {{ $product->name }}
+                                    </a>
+
+                                    <span class="stext-105 cl3">
+                                        {!!  \App\Helpers\Helper::price($product->price, $product->price_sale)  !!}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+
+
             @foreach($menus as $menu)
                 @php
                     $count = 0;
@@ -379,7 +454,6 @@
                         <h3 class="section-title section-title-normal"><span class="section-title-main" style="color: #ffffff;">
                                 <a class="section-title-link" href="{{ route('index_danhmuc',[$menu->id,Str::slug($menu->name, "-")]) }}">{{$menu->name}}</a></span>
                         </h3>
-                        <p></p>
                     </div>
 
                     <ul id="product_{{$menu->id}}" class="cs-hidden">
@@ -421,7 +495,6 @@
 @endsection
 
 @section('footer')
-    {{--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--}}
     <script src="/web_noi_that1/public/template/lightslider-master/dist/js/lightslider.js"></script>
     <script>
     $(document).ready(function() {
@@ -453,6 +526,32 @@
             });
         @endif
     @endforeach
+
+        $('#product_new').lightSlider({
+            item:5,
+            slideMove:5,
+            easing: 'cubic-bezier(0.25, 0, 0.25, 1)',
+            speed:600,
+            loop:false,
+            responsive : [
+                {
+                    breakpoint:800,
+                    settings: {
+                        item:3,
+                        slideMove:3,
+                        slideMargin:6,
+                    }
+                },
+                {
+                    breakpoint:480,
+                    settings: {
+                        item:2,
+                        slideMove:2
+                    }
+                }
+            ]
+        });
+
     });
     </script>
 
@@ -465,8 +564,7 @@
                 pause:5000,
                 item:1,
                 loop:true,
-                slideMargin:0,
-                enableDrag: false,
+                // enableDrag: false,
             });
             autoplaySlider.play();
         });

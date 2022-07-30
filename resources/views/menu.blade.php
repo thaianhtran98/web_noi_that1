@@ -1,13 +1,33 @@
 @extends('main')
 
+@section('head')
+    <style>
+
+        @media (max-width: 2900px) {
+            #img_banner {
+                width: calc(100%);
+            }
+
+            /*#sort {*/
+            /*   */
+            /*}*/
+        }
+
+        @media (max-width: 912px) {
+            #img_banner  {
+                width: calc(100%);
+            }
+        }
+    </style>
+@endsection
+
 @section('content')
-    <div class="bg0 m-t-23 p-b-140 p-t-80">
+    <div class="container" style="text-align: center">
+        <img id="img_banner"  src="\web_noi_that1\public\template\admin\dist\img\banner menu.jpg">
+    </div>
+    <div class="bg0 m-t-23 p-b-140 p-t-30">
         <div class="container">
-
-        </div>
-
-        <div class="container">
-            <div class="flex-w flex-sb-m p-b-52" style="background-color: rgba(87,87,87,0.11); height: 40px;line-height: 52px; margin-bottom: 20px">
+            <div class="flex-w flex-sb-m" id="sort" style="background-color: rgba(87,87,87,0.11); margin-bottom: 20px">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10" >
 {{--                   <h1>{{ $title }}</h1>--}}
                     <div class="flex-w flex-l-m filter-tope-group m-tb-10">
@@ -52,7 +72,7 @@
                 </div>
 
                 <!-- Filter -->
-                <div class="dis-none panel-filter w-full p-t-10">
+                <div class="dis-none panel-filter w-full p-t-10" style="position: relative; z-index:  202000">
                     <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                         <div class="filter-col1 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15" style="font-family: Roboto, Sans-Serif;">
