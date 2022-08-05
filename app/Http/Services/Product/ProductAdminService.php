@@ -80,7 +80,7 @@ class ProductAdminService
         if ($isValidPrice === false) return false;
 
         try {
-            $product->fill($request->input());
+            $product->fill($request->all());
             $product->save();
 
             products_detail::where('id_sp',$product->id)->delete();

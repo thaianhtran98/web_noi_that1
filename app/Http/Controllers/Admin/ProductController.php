@@ -62,7 +62,6 @@ class ProductController extends Controller
         if ($result) {
             return redirect('/admin/products/list');
         }
-
         return redirect()->back();
     }
 

@@ -114,28 +114,37 @@
                             <h2 class="product-short-description-header">Thông số kỹ thuật</h2>
 
                             <p>
-                                <strong>Màu sắc:</strong> {{$product->color}}<br>
-                                <strong>Kích thước:</strong> <span style="font-size: 14px;">{{$product->size}}</span><br>
-                                <strong>Chất liệu: </strong><span style="font-size: 14px;">{{$product->material}}</span><br>
-                                <strong>Kiểu dáng:&nbsp;</strong>{{$product->style}}<br>
+                                @if($product->color != null)
+                                    <strong>Màu sắc:</strong> {{$product->color}}<br>
+                                @endif
+
+                                @if($product->size != null)
+                                    <strong>Kích thước:</strong> <span style="font-size: 14px;">{{$product->size}}</span><br>
+                                @endif
+
+                                @if($product->material != null)
+                                    <strong>Chất liệu: </strong><span style="font-size: 14px;">{{$product->material}}</span><br>
+                                @endif
+
+                                @if($product->style != null)
+                                    <strong>Kiểu dáng:&nbsp;</strong>{{$product->style}}<br>
+                                @endif
+
                                 @if($product->origin == null)
-                                <strong>Xuất xứ:</strong>
-                                &nbsp;Sản phẩm của&nbsp;<a href="{{route('home')}}" target="_blank" rel="noopener noreferrer">Nội Thất Phúc Thịnh</a><br>
+                                    <strong>Xuất xứ:</strong>
+                                &nbsp;      Sản phẩm của&nbsp;<a href="{{route('home')}}" target="_blank" rel="noopener noreferrer">Nội Thất Phúc Thịnh</a><br>
                                 @else
                                     <strong>Xuất xứ:</strong>
                                     &nbsp;Sản phẩm của&nbsp;<a>{{$product->origin}}</a><br>
                                 @endif
-                                <strong>Bảo hành:</strong>&nbsp;{{$product->warranty}}<br>
-                                Giá chưa bao gồm vận chuyển<br>
+
+                                @if($product->warranty != null)
+                                    <strong>Bảo hành:</strong>&nbsp;{{$product->warranty}}<br>
+                                @endif
+                                    Giá chưa bao gồm vận chuyển<br>
                             </p>
                         </div>
 
-                        <p class="stext-102 cl3 p-t-23">
-                            {{ $product->description }}
-                        </p>
-
-
-                        <!--  -->
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -174,6 +183,7 @@
 
     </section>
 
+    @if($product->content != null)
     <div class="product-footer">
         <div class="woocommerce-tabs wc-tabs-wrapper container tabbed-content">
             <ul class="tabs wc-tabs product-tabs small-nav-collapse nav nav-uppercase nav-tabs nav-normal nav-left" role="tablist">
@@ -181,6 +191,7 @@
                     <strong> <a style="font-family:  Roboto, Sans-Serif;color: #717fe0" class="stext-301"> Mô tả </a></strong>
                 </li>
             </ul>
+
             <div class="tab-panels">
                 <div id="tab-description" role="tabpanel" aria-labelledby="tab-title-description" >
                     {!! $product->content !!}
@@ -188,6 +199,8 @@
             </div>
         </div>
     </div>
+    @endif
+
 
     <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">

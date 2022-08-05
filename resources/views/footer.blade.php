@@ -50,6 +50,7 @@
                 </div>
             </div>
 
+
             <div class="col-sm-6 col-lg-3 p-b-50">
                 <div id="fb-root"></div>
                 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="3DoZRTIj"></script>
@@ -57,7 +58,10 @@
                     Fanpage
                 </h4>
                 <div class="fb-page" data-href="https://www.facebook.com/N%E1%BB%98I-TH%E1%BA%A4T-PH%C3%9AC-TH%E1%BB%8ANH-109158808390146/?ref=page_internal"
-                     data-tabs="timeline" data-width="500" data-height="300" data-small-header="false"
+                     data-tabs="timeline"
+                     data-width="500"
+                     data-height="300"
+                     data-small-header="false"
                      data-adapt-container-width="true"
                      data-hide-cover="false"
                      data-show-facepile="true">
@@ -66,6 +70,8 @@
                     </blockquote>
                 </div>
             </div>
+
+
         </div>
     </div>
 </footer>

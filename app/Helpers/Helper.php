@@ -135,7 +135,9 @@ class Helper
             return $html1;
         }
         if ($price != 0)
-            return number_format($price);
+            $html1 .= '<span>'. number_format($price) . ' VNĐ</span>';
+            $html1 .= '<br>';
+            return $html1;
         return '<a style="font-family:  Roboto, Sans-Serif;" href="/lien-he.html">Liên Hệ</a>';
     }
 }

@@ -56,8 +56,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('upload/services/delete', [\App\Http\Controllers\Admin\UploadController::class, 'delete'])->name('upload_delete');
 
         #Cart
-        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
-        Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
+        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index'])->name('customers');
+        Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show'])->name('customers_detail');
+        Route::delete('customers/destroy', [\App\Http\Controllers\Admin\CartController::class, 'destroy'])->name('customers_delete');
     });
 });
 

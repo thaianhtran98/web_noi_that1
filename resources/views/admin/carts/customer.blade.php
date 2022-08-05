@@ -21,11 +21,11 @@
                 <td>{{ $customer->email }}</td>
                 <td>{{ $customer->created_at }}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{ $customer->id }}">
+                    <a class="btn btn-primary btn-sm" href="{{ route('customers_detail',$customer->id)  }}">
                         <i class="fas fa-eye"></i>
                     </a>
                     <a href="#" class="btn btn-danger btn-sm"
-                       onclick="removeRow({{ $customer->id }}, '/admin/customers/destroy')">
+                       onclick="removeRow({{ $customer->id }}, '{{route('customers_delete')}}')">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>

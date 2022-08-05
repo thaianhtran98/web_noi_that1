@@ -276,6 +276,7 @@
         </ul>
     </div>
 
+{{-- Giới thiệu các khuyến mãi của xưởng--}}
 
     <section id="home-service">
         <div class="container">
@@ -399,7 +400,6 @@
 
         </div>
     </section>
-
 
     <link type="text/css" rel="stylesheet" href="/web_noi_that1/public/template/lightslider-master/dist/css/lightslider.css" />
 

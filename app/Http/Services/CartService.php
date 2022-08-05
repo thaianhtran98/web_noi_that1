@@ -29,6 +29,7 @@ class CartService
             Session::put('carts', [
                 $product_id => $qty
             ]);
+            Session::flash('success', 'Thêm thành công');
             return true;
         }
 
@@ -36,12 +37,14 @@ class CartService
         if ($exists) {
             $carts[$product_id] = $carts[$product_id] + $qty;
             Session::put('carts', $carts);
+            Session::flash('success', 'Thêm thành công');
             return true;
         }
 
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
 
+        Session::flash('success', 'Thêm thành công');
         return true;
     }
 
@@ -59,7 +62,19 @@ class CartService
 
     public function update($request)
     {
+        $id_product = $request->input('id_product');
+        $num_product = $request->input('num_product');
+
+
         Session::put('carts', $request->input('num_product'));
+
+        $carts = Session::get('carts');
+        foreach ($id_product as $id){
+            if ($carts[$id]==0){
+                unset($carts[$id]);
+                Session::put('carts', $carts);
+            }
+        }
 
         return true;
     }
@@ -102,7 +117,7 @@ class CartService
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error', 'Đặt Hàng Lỗi, Vui lòng thử lại sau');
+            Session::flash('error', 'Đặt Hàng Lỗi, Vui Lòng Thử Lại Sau');
             return false;
         }
 
@@ -141,4 +156,15 @@ class CartService
             $query->select('id', 'name', 'thumb');
         }])->get();
     }
+
+    public function delete($request){
+        $cart = Customer::where('id', $request->input('id'))->first();
+        if ($cart) {
+            $cart->delete();
+            return true;
+        }
+
+        return false;
+    }
+
 }
