@@ -85,13 +85,13 @@
                     searchPanes: {
                         show: true
                     },
-                    targets: [ 2,3,4 ,5]
+                    targets: [ 0,1,2]
                 },
                 {
                     searchPanes: {
                         show: false
                     },
-                    targets: [ 1]
+                    targets: [ 3,4,5]
                 },
             ],
             searchPanes: {

@@ -42,11 +42,19 @@
                 </h4>
 
                 <div id="map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.91063304488!2d105.76630731525776!3d10.024233275365813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0883aef5aaaad%3A0xdbb86a7e6f1429f!2sBilliards%20Club%20Th%E1%BB%8Bnh%20Ph%C3%A1t!5e0!3m2!1svi!2s!4v1659081109136!5m2!1svi!2s"
+{{--                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.91063304488!2d105.76630731525776!3d10.024233275365813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0883aef5aaaad%3A0xdbb86a7e6f1429f!2sBilliards%20Club%20Th%E1%BB%8Bnh%20Ph%C3%A1t!5e0!3m2!1svi!2s!4v1659081109136!5m2!1svi!2s"--}}
+{{--                            width="255" height="300" style="border:0;"--}}
+{{--                            allowfullscreen="" loading="lazy"--}}
+{{--                            referrerpolicy="no-referrer-when-downgrade">--}}
+{{--                    </iframe>--}}
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.52885318717904!2d105.74156574325124!3d10.061207222913525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a087df90f8668d%3A0xa54b9873aa69c338!2zWMaw4bufbmcgTuG7mWkgVGjhuqV0IFBow7pjIFRo4buLbmg!5e0!3m2!1svi!2s!4v1660148764709!5m2!1svi!2s"
                             width="255" height="300" style="border:0;"
-                            allowfullscreen="" loading="lazy"
+{{--                            style="border:0;" --}}
+                            allowfullscreen=""
+                            loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
+
                 </div>
             </div>
 

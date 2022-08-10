@@ -93,7 +93,7 @@
             <div class="block2">
                 <div class="block2-pic hov-img0">
                     <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}">
-                        <img src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                        <img height="95%"  class="img_sp"  src="{{ $product->thumb }}" alt="{{ $product->name }}">
                     </a>
                 </div>
 

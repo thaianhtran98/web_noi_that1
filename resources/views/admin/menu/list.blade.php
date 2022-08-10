@@ -15,6 +15,11 @@
             {!! \App\Helpers\Helper::menu($menus) !!}
         </tbody>
     </table>
+
+
+    <div>
+        {!! $menus->links() !!}
+    </div>
 @endsection
 
 

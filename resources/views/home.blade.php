@@ -191,6 +191,7 @@
             background-position: 2px 0;
             left: -20px;
             border-radius: 50%;
+            z-index: 200;
         }
 
         .lSAction > .lSNext {
@@ -198,6 +199,7 @@
             background-position: -33px 0;
             right: -20px;
             border-radius: 50%;
+            z-index: 200;
         }
 
         .lSAction > a:hover {
@@ -427,7 +429,7 @@
                                 <div class="block2-txt-child1 flex-col-l ">
                                     <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}"
                                        class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                        {{ $product->name }}
+                                        {{ $product->name }} {{ $product->id_sp }}
                                     </a>
 
                                     <span class="stext-105 cl3">
@@ -471,7 +473,7 @@
                                         <div class="block2-txt-child1 flex-col-l ">
                                             <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}"
                                                class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                {{ $product->name }}
+                                                {{ $product->name }} {{ $product->id_sp }}
                                             </a>
 
                                             <span class="stext-105 cl3">

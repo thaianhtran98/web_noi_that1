@@ -94,7 +94,7 @@ class MenuService
     {
 
         $query = $menu->products()
-            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id')
+            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id','id_sp')
             ->where('active', 1);
 
         if ($request->input('price')) {
@@ -117,7 +117,7 @@ class MenuService
            $arr[]=$m->id;
 
         $query = Product::whereIn('menu_id',$arr)
-            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id')
+            ->select('id', 'name', 'price', 'price_sale', 'thumb','menu_id','id_sp')
             ->where('active', 1);
 
         if ($request->input('price')) {

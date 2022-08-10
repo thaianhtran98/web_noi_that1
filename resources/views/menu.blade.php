@@ -111,15 +111,16 @@
                         <div class="block2">
                             <div class="block2-pic hov-img0">
                                 <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}">
-                                    <img src="{{ $product->thumb }}" alt="{{ $product->name }}">
+                                    <img width="95%" height="95%"  src="{{ $product->thumb }}" alt="{{ $product->name }}">
                                 </a>
                             </div>
 
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
-                                    <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}"
+                                    <a href="{{ route('index_sanpam',[$product->id,Str::slug($product->name, '-') ])}}" style="width: 100%; display: flex"
                                        class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                        {{ $product->name }}
+                                        <div>{{ $product->name }} {{ $product->id_sp }}</div>
+                                        <div style="margin-right: 0;margin-left: auto"></div>
                                     </a>
 
                                     <span class="stext-105 cl3">

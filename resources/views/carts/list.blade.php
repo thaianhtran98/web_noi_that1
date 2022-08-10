@@ -4,7 +4,7 @@
     @include('admin.alert')
     <form class="bg0 p-b-85" method="post">
         @if (count($products) != 0)
-            <div style="width: 90%">
+            <div class="p-l-20 p-r-20" style="width: 100%;">
                 <div class="row">
                     <div class="col-lg-10 col-xl-5 m-lr-auto m-b-50">
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
@@ -29,9 +29,9 @@
                                         @endphp
                                         <tr class="table_row">
                                             <td >
-                                                <div style="display: flex; line-height: 80.08px">
-                                                    <img width="60px" class="m-r-10" src="{{ $product->thumb }}" alt="IMG">
-                                                     {{ $product->name }}
+                                                <div style="display: flex; line-height: 100px">
+                                                    <img width="95%" height="95%"  class="m-r-10 m-l-10" src="{{ $product->thumb }}" alt="IMG">
+                                                     {{ $product->name }} {{ $product->id_sp }}
                                                 </div>
                                             </td>
 
@@ -132,10 +132,6 @@
                                                 </p>
                                             </div>
                                         </div>
-
-
-
-
 
 
 

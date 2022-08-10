@@ -13,7 +13,7 @@ class ProductService
 
     public function get($page = null)
     {
-        return Product::select('id', 'name', 'price', 'price_sale', 'thumb')
+        return Product::select('id', 'name', 'price', 'price_sale', 'thumb','id_sp')
             ->orderByDesc('id')
             ->when($page != null, function ($query) use ($page) {
                 $query->offset($page * self::LIMIT);

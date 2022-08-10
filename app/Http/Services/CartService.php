@@ -109,7 +109,7 @@ class CartService
             $this->infoProductCart($carts, $customer->id);
 
             DB::commit();
-            Session::flash('success', 'Đặt Hàng Thành Công');
+            Session::flash('success', 'Đặt hàng thành công');
 
             #Queue
             SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
@@ -117,9 +117,10 @@ class CartService
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error', 'Đặt Hàng Lỗi, Vui Lòng Thử Lại Sau');
+            Session::flash('error', 'Đặt hàng không thành công');
             return false;
         }
+
 
         return true;
     }
